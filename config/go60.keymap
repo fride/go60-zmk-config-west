@@ -117,6 +117,7 @@
 
         // cmb_oe
         combo_cmb_oe {
+             timeout-ms = <35>;
             key-positions = <POS_RH_C2R2 POS_RH_C3R2>;
             bindings = <&oe>;
         };
@@ -124,23 +125,29 @@
         // cmb_ue
         combo_cmb_ue {
             key-positions = <POS_RH_C2R2 POS_RH_C4R2>;
+            timeout-ms = <35>;
             bindings = <&ue>;
         };
         combo_cmb_ae {
             key-positions = <POS_RH_C2R3 POS_RH_C4R3>;
             bindings = <&ae>;
+            timeout-ms = <35>;
         };
         combo_cmb_sz {
             key-positions = <POS_LH_C5R3 POS_LH_C4R3>;
             bindings = <&ae>;
+            timeout-ms = <35>;
         };
-        combo_cmb_left_shift {
-            key-positions = <POS_LH_C3R2 POS_LH_C4R2>;
-            bindings = <&skq LSFT>;
+
+        combo_cmb_left_ctrl {
+            key-positions = <POS_LH_C3R3 POS_LH_C4R3>;
+            bindings = <&skq LCTL>;
+            timeout-ms = <35>;
         };
         combo_cmb_right_shift{
-            key-positions = <POS_RH_C3R2 POS_RH_C4R2>;
-            bindings = <&skq RSFT>;
+            key-positions = <POS_RH_C3R3 POS_RH_C4R3>;
+            bindings = <&skq RCTL>;
+            timeout-ms = <35>;
         };
     };
 };
@@ -339,7 +346,7 @@
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &to 0
               &kp TAB   &as K      &as W    &as N     &as G   &as Q                                                       &as EQUAL   &as U      &as O     &as Y     &as J     &kp BSLH
-                &kp W   &as P      &as S    &as R     &as D   &as M                                                       &as MINUS   &as I      &as E     &as A     &as C      &kp B
+                &kp W   &as P      &as S    &as R     &as D   &as M                                                       &as MINUS   &as I      &as E     &as A     &as H      &kp B
  &magic LAYER_Magic 0   &as B      &as F    &as L     &as C   &as Z                                                       &as SLASH   &as SCLN &as DOT   &as COMMA   &as SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
