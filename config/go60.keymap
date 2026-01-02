@@ -16,6 +16,7 @@
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include "zmk-helpers/helper.h"
 
 // layers
 #define LAYER_Base 0
@@ -86,6 +87,56 @@
 #define POS_RH_T2 58
 #define POS_RH_T1 59
 
+#define LEFT_HAND_KEYS \
+  POS_LH_C1R1 POS_LH_C2R1 POS_LH_C3R1 POS_LH_C4R1 POS_LH_C5R1 POS_LH_C6R1 \
+  POS_LH_C1R2 POS_LH_C2R2 POS_LH_C3R2 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C6R2 \
+  POS_LH_C1R3 POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3 POS_LH_C5R3 POS_LH_C6R3 \
+  POS_LH_C1R4 POS_LH_C2R4 POS_LH_C3R4 POS_LH_C4R4 POS_LH_C5R4 POS_LH_C6R4 \
+              POS_LH_C2R5 POS_LH_C3R5 POS_LH_C4R5
+
+#define RIGHT_HAND_KEYS \
+  POS_RH_C1R1 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C6R1 \
+  POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C6R2 \
+  POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C6R3 \
+  POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C6R4 \
+              POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5
+
+#define THUMB_KEYS \
+  POS_LH_T1 POS_LH_T2 POS_LH_T3 \
+
+
+/* Left-hand HRMs. */
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+    hold-trigger-on-release;
+)
+
+/* Right-hand HRMs. */
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+    hold-trigger-on-release;
+) 
+
+#define HL_P &hml LGUI P
+#define HL_S &hml LALT S
+#define HL_R &hml LSFT R
+#define HL_D &hml LCTL D 
+
+#define HR_I &hmr RCTL I
+#define HR_E &hmr RSFT E
+#define HR_A &hmr LALT A
+#define HR_H &hmr RGUI H
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -96,18 +147,64 @@
             bindings = <&kp RET>;
         };
 
-
-
         // cmb_oe
         combo_cmb_oe {
+             timeout-ms = <35>;
             key-positions = <POS_RH_C2R2 POS_RH_C3R2>;
             bindings = <&oe>;
         };
 
-        // cmb_ae
+        // cmb_ue
+        combo_cmb_ue {
+            key-positions = <POS_RH_C2R2 POS_RH_C4R2>;
+            timeout-ms = <35>;
+            bindings = <&ue>;
+        };
         combo_cmb_ae {
-            key-positions = <POS_RH_C2R4 POS_RH_C4R4>;
+            key-positions = <POS_RH_C2R3 POS_RH_C4R3>;
             bindings = <&ae>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_sz {
+            key-positions = <POS_LH_C5R3 POS_LH_C4R3>;
+            bindings = <&ae>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_v{
+            key-positions = <POS_LH_C5R2 POS_LH_C4R2>;
+            bindings = <&kp V>;
+            timeout-ms = <35>;
+        };
+
+        combo_cmb_left_ctrl {
+            key-positions = <POS_LH_C3R3 POS_LH_C4R3>;
+            bindings = <&sk LCTL>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_right_ctrl {
+            key-positions = <POS_RH_C3R3 POS_RH_C4R3>;
+            bindings = <&sk RCTL>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_left_gui{
+            key-positions = <POS_LH_C2R4 POS_LH_C1R4>;
+            bindings = <&sk LGUI>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_right_gui {
+            key-positions = <POS_RH_C2R4 POS_RH_C1R4>;
+            bindings = <&sk RGUI>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_delete {
+            key-positions = <POS_LH_C2R3 POS_LH_C1R3>;
+            bindings = <&kp DEL>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_backspace{
+            key-positions = <POS_RH_C2R3 POS_RH_C1R3>;
+            bindings = <&kp BACKSPACE>;
+            timeout-ms = <35>;
         };
     };
 };
@@ -123,6 +220,51 @@
     };
 
     behaviors {
+
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+        };
+           
+        shifted: macro_shifted_kp {
+            #binding-cells = <1>;
+            label = "MACRO_SHIFTED_KP";
+            compatible = "zmk,behavior-macro-one-param";
+            bindings =
+              <&macro_press &kp LSHFT>,
+              <&macro_param_1to1 &macro_tap &kp MACRO_PLACEHOLDER>,
+              <&macro_release &kp LSHFT>;
+        };
+
+        as_ht: autoshift_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            label = "AUTOSHIFT_HOLD_TAP";
+            #binding-cells = <2>;
+            tapping-term-ms = <195>;
+            flavor = "tap-preferred";
+            bindings = <&shifted>, <&kp>;
+        };
+
+        as: autoshift {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            label = "AUTOSHIFT_KP";
+            bindings =
+              <&macro_press>,
+              <&macro_param_1to1>,
+              <&macro_param_1to2>,
+              <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>,
+              <&macro_pause_for_release>,
+              <&macro_release>,
+              <&macro_param_1to1>,
+              <&macro_param_1to2>,
+              <&as_ht MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+        };
+        
         arcane: arcane {
              compatible = "zmk,behavior-adaptive-key";
              #binding-cells = <0>;
@@ -259,12 +401,12 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &kp MINUS
-              &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp B     &arcane      &kp U     &kp O     &kp Q     &kp BSLH
-              &kp ESC   &kp S      &kp T    &kp N     &kp D   &kp Y                                                       &kp F       &kp N      &kp E     &kp A     &kp I      &kp SQT
- &magic LAYER_Magic 0   &kp X      &kp K    &kp J     &kp G   &kp W                                                       &kp X       &kp H  &kp COMMA   &kp DOT   &kp SQT   &keypad_td
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                        &kp LGUI   &kp LBKT  &kp RBKT
-                                                   &kp SPACE &symbol_nav_td &kp LCTRL              &kp LALT  &kp SPACE  &sk LSFT  &kp SPACE
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
+              &kp TAB   &kp K      &kp W    &kp N     &kp G   &kp Q                                                       &kp EQUAL   &kp U      &kp O      &kp Y     &kp J     &kp BSLH
+            &skq LSFT   HL_P        HL_S     HL_R      HL_D   &kp M                                                       &kp MINUS    HR_I       HR_E       HR_A      HR_H      &skq RSFT
+ &magic LAYER_Magic 0   &kp B      &kp F    &kp L     &kp C   &kp Z                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &keypad_td
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
+                                                      &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
         };
 
