@@ -335,8 +335,18 @@
 
     keymap {
         compatible = "zmk,keymap";
+        layer_Base {
+            bindings = <
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &to 0
+              &kp TAB   &as K      &as W    &as N     &as G   &as Q                                                       &as EQUAL   &as U      &as O     &as Y     &as Q     &kp BSLH
+                &kp W   &as P      &as S    &as R     &as D   &as M                                                       &as MINUS   &as I      &as E     &as A     &as C      &kp B
+ &magic LAYER_Magic 0   &as B      &as F    &as L     &as C   &as Z                                                       &as SLASH   &as SCLN &as DOT   &as COMMA   &as SQT   &keypad_td
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
+                                                      &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
+            >;
+        };
 
-        layer_Base{
+        layer_Keypad {
             bindings = <
                 &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
                &trans      &none   &kp HOME     &kp UP    &kp END      &kp PG_UP                                              &kp KP_N7  &kp KP_N8   &kp KP_N9  &kp KP_MINUS     &kp KP_SLASH        &kp F12
