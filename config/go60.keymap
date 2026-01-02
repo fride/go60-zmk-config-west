@@ -207,7 +207,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "AUTOSHIFT_HOLD_TAP";
             #binding-cells = <2>;
-            tapping-term-ms = <175>;
+            tapping-term-ms = <195>;
             flavor = "tap-preferred";
             bindings = <&shifted>, <&kp>;
         };
@@ -366,7 +366,7 @@
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &to 0
               &kp TAB   &as K      &as W    &as N     &as G   &as Q                                                       &as EQUAL   &as U      &as O     &as Y     &as J     &kp BSLH
-                &kp W   &as P      &as S    &as R     &as D   &as M                                                       &as MINUS   &as I      &as E     &as A     &as H      &kp B
+            &skq LSFT   &as P      &as S    &as R     &as D   &as M                                                       &as MINUS   &as I      &as E     &as A     &as H      &skq RSFT
  &magic LAYER_Magic 0   &as B      &as F    &as L     &as C   &as Z                                                       &as SLASH   &as SCLN &as DOT   &as COMMA   &as SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
