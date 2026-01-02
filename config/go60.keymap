@@ -127,15 +127,15 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-on-release;
 ) 
 
-#define HL_P &hmr LGUI P
-#define HL_S &hmr LALT S
-#define HL_R &hmr LSFT R
-#define HL_D &hmr LCTL D 
+#define HL_P &hml LGUI P
+#define HL_S &hml LALT S
+#define HL_R &hml LSFT R
+#define HL_D &hml LCTL D 
 
-#define HR_I &hml RCTL I
-#define HR_E &hml LALT E
-#define HR_A &hml RCTL A
-#define HR_H &hml RGUI H
+#define HR_I &hmr RCTL I
+#define HR_E &hmr RSFT E
+#define HR_A &hmr LALT A
+#define HR_H &hmr RGUI H
 
 / {
     combos {
