@@ -16,6 +16,7 @@
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+#include "zmk-helpers/helper.h"
 
 // layers
 #define LAYER_Base 0
@@ -103,6 +104,29 @@
 #define THUMB_KEYS \
   POS_LH_T1 POS_LH_T2 POS_LH_T3 \
 
+
+/* Left-hand HRMs. */
+ZMK_HOLD_TAP(hml,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+    hold-trigger-on-release;
+)
+
+/* Right-hand HRMs. */
+ZMK_HOLD_TAP(hmr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&kp>, <&kp>;
+    hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+    hold-trigger-on-release;
+) 
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -136,6 +160,11 @@
         combo_cmb_sz {
             key-positions = <POS_LH_C5R3 POS_LH_C4R3>;
             bindings = <&ae>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_v{
+            key-positions = <POS_LH_C5R2 POS_LH_C4R2>;
+            bindings = <&kp V>;
             timeout-ms = <35>;
         };
 
