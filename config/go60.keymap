@@ -144,9 +144,29 @@
             bindings = <&skq LCTL>;
             timeout-ms = <35>;
         };
-        combo_cmb_right_shift{
+        combo_cmb_right_ctrl {
             key-positions = <POS_RH_C3R3 POS_RH_C4R3>;
             bindings = <&skq RCTL>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_left_gui{
+            key-positions = <POS_LH_C2R4 POS_LH_C1R4>;
+            bindings = <&sk LGUI>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_right_gui {
+            key-positions = <POS_RH_C2R4 POS_RH_C1R4>;
+            bindings = <&sk RGUI>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_delete {
+            key-positions = <P2OS_LH_C2R3 POS_LH_C1R3>;
+            bindings = <&kp DEL>;
+            timeout-ms = <35>;
+        };
+        combo_cmb_right_shift{
+            key-positions = <POS_RH_C2R3 POS_RH_C1R3>;
+            bindings = <&skq BACKSPACE>;
             timeout-ms = <35>;
         };
     };
