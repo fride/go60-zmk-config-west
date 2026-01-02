@@ -127,6 +127,16 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-on-release;
 ) 
 
+#define HL_P &hmr LGUI P
+#define HL_S &hmr LALT S
+#define HL_R &hmr LSFT R
+#define HL_D &hmr LCTL D 
+
+#define HR_I &hml RCTL I
+#define HR_E &hml LALT E
+#define HR_A &hml RCTL A
+#define HR_H &hml RGUI H
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -136,8 +146,6 @@ ZMK_HOLD_TAP(hmr,
             key-positions = <POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3>;
             bindings = <&kp RET>;
         };
-
-
 
         // cmb_oe
         combo_cmb_oe {
@@ -393,10 +401,10 @@ ZMK_HOLD_TAP(hmr,
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &to 0
-              &kp TAB   &as K      &as W    &as N     &as G   &as Q                                                       &as EQUAL   &as U      &as O     &as Y     &as J     &kp BSLH
-            &skq LSFT   &as P      &as S    &as R     &as D   &as M                                                       &as MINUS   &as I      &as E     &as A     &as H      &skq RSFT
- &magic LAYER_Magic 0   &as B      &as F    &as L     &as C   &as Z                                                       &as SLASH   &as SCLN &as DOT   &as COMMA   &as SQT   &keypad_td
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
+              &kp TAB   &kp K      &kp W    &kp N     &kp G   &kp Q                                                       &kp EQUAL   &kp U      &kp O      &kp Y     &kp J     &kp BSLH
+            &skq LSFT   HL_P        HL_S     HL_R      HL_D   &kp M                                                       &kp MINUS    HR_I       HR_E       HR_A      HR_H      &skq RSFT
+ &magic LAYER_Magic 0   &kp B      &kp F    &kp L     &kp C   &kp Z                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &pk SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
