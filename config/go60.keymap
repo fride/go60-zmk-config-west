@@ -87,6 +87,25 @@
 #define POS_RH_T2 58
 #define POS_RH_T1 59
 
+#define LEFT_HAND_KEYS \
+  POS_LH_C1R1 POS_LH_C2R1 POS_LH_C3R1 POS_LH_C4R1 POS_LH_C5R1 POS_LH_C6R1 \
+  POS_LH_C1R2 POS_LH_C2R2 POS_LH_C3R2 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C6R2 \
+  POS_LH_C1R3 POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3 POS_LH_C5R3 POS_LH_C6R3 \
+  POS_LH_C1R4 POS_LH_C2R4 POS_LH_C3R4 POS_LH_C4R4 POS_LH_C5R4 POS_LH_C6R4 \
+              POS_LH_C2R5 POS_LH_C3R5 POS_LH_C4R5
+
+#define RIGHT_HAND_KEYS \
+  POS_RH_C1R1 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C6R1 \
+  POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C6R2 \
+  POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C6R3 \
+  POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C6R4 \
+              POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5
+
+#define THUMB_KEYS \
+  POS_LH_T1 POS_LH_T2 POS_LH_T3 \
+
+
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -110,6 +129,14 @@
             key-positions = <POS_RH_C2R4 POS_RH_C4R4>;
             bindings = <&ae>;
         };
+        combo_cmb_left_shift {
+            key-positions = <POS_LH_C3R2 POS_LH_C4R2>;
+            bindings = <&sk LSFT>;
+        };
+        combo_cmb_right_shift{
+            key-positions = <POS_RH_C3R2 POS_RH_C4R2>;
+            bindings = <&sk RSFT>;
+        };
     };
 };
 
@@ -124,6 +151,8 @@
     };
 
     behaviors {
+
+    
         arcane: arcane {
              compatible = "zmk,behavior-adaptive-key";
              #binding-cells = <0>;
@@ -264,8 +293,8 @@
               &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp B     &arcane      &kp U     &kp O     &kp Q     &kp BSLH
               &kp ESC   &kp S      &kp T    &kp N     &kp D   &kp Y                                                       &kp F       &kp N      &kp E     &kp A     &kp I      &kp SQT
  &magic LAYER_Magic 0   &kp X      &kp K    &kp J     &kp G   &kp W                                                       &kp X       &kp H  &kp COMMA   &kp DOT   &kp SQT   &keypad_td
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                        &kp LGUI   &kp LBKT  &kp RBKT
-                                                   &kp R &symbol_nav_td &kp LCTRL              &kp LALT  &kp SPACE  &sk LSFT  &lt LAYER_Keypad SPACE
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                        &kp N9 &kp LBKT  &kp RBKT
+                                                   &kp R &symbol_nav_td &kp LCTRL              &kp N1  &kp N2  &sk LSFT  &lt LAYER_Keypad SPACE
             >;
         };
         
@@ -275,8 +304,8 @@
               &kp TAB   &kp Z      &kp P    &kp D     &kp L   &kp X                                                       &kp EQUAL   &kp U      &kp O     &kp Y     &kp Q     &kp BSLH
                 &kp W   &kp S      &kp N    &kp T     &kp H   &kp K                                                       &kp MINUS   &kp I      &kp E     &kp A     &kp C      &kp B
  &magic LAYER_Magic 0   &kp V      &kp F    &kp G     &kp M   &kp J                                                       &kp SCLN    &kp SLASH  &kp DOT   &kp COMMA   &kp SQT   &keypad_td
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                        &kp LGUI   &kp LBKT  &kp RBKT
-                                                   &kp R &symbol_nav_td &kp LCTRL              &kp LALT  &kp SPACE  &sk LSFT  &lt LAYER_Keypad SPACE
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                            &kp N9 &kp LBKT  &kp RBKT
+                                                   &kp R    &symbol_nav_td &kp LCTRL           &kp N1  &kp N2  &sk LSFT  &lt LAYER_Keypad SPACE
             >;
         };
 
