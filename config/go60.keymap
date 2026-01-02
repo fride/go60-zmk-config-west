@@ -104,8 +104,6 @@
 #define THUMB_KEYS \
   POS_LH_T1 POS_LH_T2 POS_LH_T3 \
 
-
-
 / {
     combos {
         compatible = "zmk,combos";
@@ -131,11 +129,11 @@
         };
         combo_cmb_left_shift {
             key-positions = <POS_LH_C3R2 POS_LH_C4R2>;
-            bindings = <&sk LSFT>;
+            bindings = <&skq LSFT>;
         };
         combo_cmb_right_shift{
             key-positions = <POS_RH_C3R2 POS_RH_C4R2>;
-            bindings = <&sk RSFT>;
+            bindings = <&skq RSFT>;
         };
     };
 };
@@ -152,7 +150,15 @@
 
     behaviors {
 
-    
+        skq: sticky_key_quick_release {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+            ignore-modifiers;
+        };
+           
         arcane: arcane {
              compatible = "zmk,behavior-adaptive-key";
              #binding-cells = <0>;
@@ -305,7 +311,7 @@
                 &kp W   &kp S      &kp N    &kp T     &kp H   &kp K                                                       &kp MINUS   &kp I      &kp E     &kp A     &kp C      &kp B
  &magic LAYER_Magic 0   &kp V      &kp F    &kp G     &kp M   &kp J                                                       &kp SCLN    &kp SLASH  &kp DOT   &kp COMMA   &kp SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                            &kp N9 &kp LBKT  &kp RBKT
-                                                   &kp R    &symbol_nav_td &kp LCTRL           &kp N1  &kp N2  &sk LSFT  &lt LAYER_Keypad SPACE
+                                                      &kp R   &kp N1 &kp N2           &kp N1  &kp N2  &sk LSFT  &lt LAYER_Keypad SPACE
             >;
         };
 
