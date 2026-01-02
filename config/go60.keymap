@@ -310,10 +310,10 @@
               &kp TAB   &kp Z      &kp P    &kp D     &kp L   &kp X                                                       &kp EQUAL   &kp U      &kp O     &kp Y     &kp Q     &kp BSLH
                 &kp W   &kp S      &kp N    &kp T     &kp H   &kp K                                                       &kp MINUS   &kp I      &kp E     &kp A     &kp C      &kp B
  &magic LAYER_Magic 0   &kp V      &kp F    &kp G     &kp M   &kp J                                                       &kp SCLN    &kp SLASH  &kp DOT   &kp COMMA   &kp SQT   &keypad_td
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                            &kp N9 &kp LBKT  &kp RBKT
-                                                      &kp R   &kp N1 &kp N2           &kp N1  &kp N2  &sk LSFT  &lt LAYER_Keypad SPACE
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
+                                                      &kp R   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
-        };
+        };999999@222I
 
         layer_Keypad {
             bindings = <
