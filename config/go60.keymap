@@ -160,7 +160,7 @@
             timeout-ms = <35>;
         };
         combo_cmb_delete {
-            key-positions = <P2OS_RH_C2R3 POS_RH_C1R3>;
+            key-positions = <POS_LH_C2R3 POS_LH_C1R3>;
             bindings = <&kp DEL>;
             timeout-ms = <35>;
         };
