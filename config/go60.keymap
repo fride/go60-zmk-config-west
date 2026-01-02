@@ -122,9 +122,17 @@
             bindings = <&oe>;
         };
 
-        // cmb_ae
+        // cmb_ue
+        combo_cmb_ue {
+            key-positions = <POS_RH_C2R2 POS_RH_C4R2>;
+            bindings = <&ue>;
+        };
         combo_cmb_ae {
-            key-positions = <POS_RH_C2R4 POS_RH_C4R4>;
+            key-positions = <POS_RH_C2R3 POS_RH_C4R3>;
+            bindings = <&ae>;
+        };
+        combo_cmb_sz {
+            key-positions = <POS_LH_C5R3 POS_LH_C4R3>;
             bindings = <&ae>;
         };
         combo_cmb_left_shift {
@@ -295,25 +303,25 @@
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &to 1
-              &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp B     &arcane      &kp U     &kp O     &kp Q     &kp BSLH
-              &kp ESC   &kp S      &kp T    &kp N     &kp D   &kp Y                                                       &kp F       &kp N      &kp E     &kp A     &kp I      &kp SQT
- &magic LAYER_Magic 0   &kp X      &kp K    &kp J     &kp G   &kp W                                                       &kp X       &kp H  &kp COMMA   &kp DOT   &kp SQT   &keypad_td
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                        &kp N9 &kp LBKT  &kp RBKT
-                                                   &kp R &symbol_nav_td &kp LCTRL              &kp N1  &kp N2  &sk LSFT  &lt LAYER_Keypad SPACE
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6       &kp N7     &kp N8    &kp N9    &kp N0        &to 1
+              &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp SCLN      &kp F      &kp O     &kp U     &kp Q     &kp BSLH
+              &kp ESC   &kp S      &kp T    &kp N     &kp D   &kp Y                                                       &kp B       &arcane      &kp E     &kp I     &kp A      &kp MINS
+ &magic LAYER_Magic 0   &kp Z      &kp K    &kp J     &kp G   &kp W                                                       &kp X         &kp H  &kp COMMA   &kp DOT   &kp SQT   &keypad_td
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                        &sk LSFT &kp LBKT  &kp RBKT
+                                                   &kp R &symbol_nav_td &kp LCTRL                  &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
         };
         
         layer_Enthium{
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8    &kp N9    &kp N0    &to 0
-              &kp TAB   &kp Z      &kp P    &kp D     &kp L   &kp X                                                       &kp EQUAL   &kp U      &kp O     &kp Y     &kp Q     &kp BSLH
-                &kp W   &kp S      &kp N    &kp T     &kp H   &kp K                                                       &kp MINUS   &kp I      &kp E     &kp A     &kp C      &kp B
- &magic LAYER_Magic 0   &kp V      &kp F    &kp G     &kp M   &kp J                                                       &kp SCLN    &kp SLASH  &kp DOT   &kp COMMA   &kp SQT   &keypad_td
+              &kp TAB   &kp K      &kp M    &kp L     &kp C   &kp X                                                       &kp EQUAL   &kp U      &kp O     &kp Y     &kp Q     &kp BSLH
+                &kp W   &kp L      &kp T    &kp R     &kp D   &kp K                                                       &kp MINUS   &kp I      &kp E     &kp A     &kp C      &kp B
+ &magic LAYER_Magic 0   &kp V      &kp K    &kp J     &kp M   &kp J                                                       &kp SCLN    &kp SLASH  &kp DOT   &kp COMMA   &kp SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &kp R   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
-        };999999@222I
+        };
 
         layer_Keypad {
             bindings = <
