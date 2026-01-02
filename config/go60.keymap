@@ -346,6 +346,7 @@
                                                    &as R &symbol_nav_td &kp LCTRL                  &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
         };
+
         
         layer_Enthium{
             bindings = <
