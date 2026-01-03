@@ -450,7 +450,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             &skq LSFT   &kp A      &kp S    &kp D     &kp F   &kp G                                                       &kp H       &kp J       &kp K     &kp L     &kp SCLN      &skq RSFT
  &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
+                                                      &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Number SPACE
             >;
         };
 
