@@ -434,10 +434,10 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &to 0
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &to LAYER_Game
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G      &kp O      &kp U  &kp COMMA     &kp BSLH
             &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C       HR_E       HR_I       HR_A      &skq RSFT
- &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P    &kp SQT   &kp SCLN     &kp DOT   &keypad_td
+ &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P    &kp SQT   &kp SCLN     &kp DOT   &kp N1
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &kp SPACE   &kp N1 &kp N2                         &kp N1  &lt LAYER_Number &arcane
             >;
@@ -448,7 +448,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
               &kp TAB   &kp Q      &kp W    &kp E     &kp R   &kp T                                                       &kp Y       &kp U      &kp I      &kp O     &kp P     &kp BSLH
             &skq LSFT   &kp A      &kp S    &kp D     &kp F   &kp G                                                       &kp H       &kp J       &kp K     &kp L     &kp SCLN      &skq RSFT
- &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &keypad_td
+ &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &kp N1
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Number SPACE
             >;
