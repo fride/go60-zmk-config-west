@@ -150,15 +150,15 @@ ZMK_HOLD_TAP(hmr,
 };
 
 
-#define HL_S &hml LGUI S
-#define HL_R &hml LALT R
-#define HL_N &hml LSFT N
-#define HL_T &hml LCTL T 
+#define HL_S &hml LSFT S
+#define HL_R &hml LCTL R
+#define HL_N &hml LALT N
+#define HL_T &hml LGUI T 
 
-#define HR_C &hmr RCTL C
-#define HR_E &hmr RSFT E
-#define HR_I &hmr LALT I
-#define HR_A &hmr RGUI A
+#define HR_C &hmr RGUI C
+#define HR_E &hmr LALT E
+#define HR_I &hmr RCTL I
+#define HR_A &hmr RSFT A
 
 // Trigger tap-action on all interrupts.
 #define MT_CORE                                                                \
@@ -181,7 +181,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 #define NAV_SPACE &lt LAYER_Navigation SPACE
 
 
-ZMK_COMBO(esc,    &kp ESC,   POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(esc,    &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
 ZMK_COMBO(colon,  &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
 
 ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
@@ -192,6 +192,7 @@ ZMK_COMBO(gt,    &kp GT,   POS_RH_C1R2 POS_RH_C1R3, ALL, 25)
 ZMK_COMBO(rbkt,  &kp RBKT, POS_RH_C2R2 POS_RH_C2R3, ALL, 25)
 ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
 ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
+ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
 
 
 
@@ -458,8 +459,8 @@ ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
             &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C        HR_E       HR_I       HR_A        &skq RSFT
  &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P   &kp COMMA    &kp DOT  &kp SLASH           &kp N1
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &kp SPACE   &kp N1 &kp N2                         &kp N1  SMART_NUM &arcane
+                               &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
+                                                      NAV_SPACE   &skq LCTL &skq RALT                          &skq LGUI  SMART_NUM &arcane
             >;
         };
 
@@ -485,13 +486,13 @@ ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
             >;
         };
 
-        layer_SymbolNav {
+        layer_Navigation {
             bindings = <
-              &kp INS    &kp F1     &kp F2    &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
-             &kp SLCK  &kp EXCL   &kp HOME    &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp RPAR           &kp UP    &kp PRCNT        &kp K_APP    &kp F12
-             &kp CAPS    &kp AT   &kp LEFT  &kp DOWN  &kp RIGHT  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
- &magic LAYER_Magic 0  &kp HASH   &kp LBKT  &kp RBKT   &kp LBRC   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
-                                 &kp CARET    &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
+              &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
+             &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp DEL            &kp UP    &kp BSPC         &kp K_APP    &kp F12
+             &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
+ &magic LAYER_Magic 0   &kp HASH   &kp LBKT    &kp RBKT   &kp LBRC   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
+                                  &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
                                                             &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
             >;
         };
