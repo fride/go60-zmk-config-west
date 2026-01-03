@@ -18,10 +18,10 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "zmk-helpers/helper.h"
 #include <behaviors/num_word.dtsi>
-
+#include "definitions/keypos_go60.dtsi"
 
 #define XXX &none
-#define ___ &trans
+#define ___ &trans 
 
 // layers
 #define LAYER_Base 0
@@ -30,85 +30,6 @@
 #define LAYER_Navigation 3
 #define LAYER_Magic 4
 #define LAYER_Factory 5
-
-
-#define POS_LH_C6R1 0
-#define POS_LH_C5R1 1
-#define POS_LH_C4R1 2
-#define POS_LH_C3R1 3
-#define POS_LH_C2R1 4
-#define POS_LH_C1R1 5
-#define POS_RH_C1R1 6
-#define POS_RH_C2R1 7
-#define POS_RH_C3R1 8
-#define POS_RH_C4R1 9
-#define POS_RH_C5R1 10
-#define POS_RH_C6R1 11
-#define POS_LH_C6R2 12
-#define POS_LH_C5R2 13
-#define POS_LH_C4R2 14
-#define POS_LH_C3R2 15
-#define POS_LH_C2R2 16
-#define POS_LH_C1R2 17
-#define POS_RH_C1R2 18
-#define POS_RH_C2R2 19
-#define POS_RH_C3R2 20
-#define POS_RH_C4R2 21
-#define POS_RH_C5R2 22
-#define POS_RH_C6R2 23
-#define POS_LH_C6R3 24
-#define POS_LH_C5R3 25
-#define POS_LH_C4R3 26
-#define POS_LH_C3R3 27
-#define POS_LH_C2R3 28
-#define POS_LH_C1R3 29
-#define POS_RH_C1R3 30
-#define POS_RH_C2R3 31
-#define POS_RH_C3R3 32
-#define POS_RH_C4R3 33
-#define POS_RH_C5R3 34
-#define POS_RH_C6R3 35
-#define POS_LH_C6R4 36
-#define POS_LH_C5R4 37
-#define POS_LH_C4R4 38
-#define POS_LH_C3R4 39
-#define POS_LH_C2R4 40
-#define POS_LH_C1R4 41
-#define POS_RH_C1R4 42
-#define POS_RH_C2R4 43
-#define POS_RH_C3R4 44
-#define POS_RH_C4R4 45
-#define POS_RH_C5R4 46
-#define POS_RH_C6R4 47
-#define POS_LH_C4R5 48
-#define POS_LH_C3R5 49
-#define POS_LH_C2R5 50
-#define POS_RH_C2R5 51
-#define POS_RH_C3R5 52
-#define POS_RH_C4R5 53
-#define POS_LH_T1 54
-#define POS_LH_T2 55
-#define POS_LH_T3 56
-#define POS_RH_T3 57
-#define POS_RH_T2 58
-#define POS_RH_T1 59
-
-#define LEFT_HAND_KEYS \
-  POS_LH_C1R1 POS_LH_C2R1 POS_LH_C3R1 POS_LH_C4R1 POS_LH_C5R1 POS_LH_C6R1 \
-  POS_LH_C1R2 POS_LH_C2R2 POS_LH_C3R2 POS_LH_C4R2 POS_LH_C5R2 POS_LH_C6R2 \
-  POS_LH_C1R3 POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3 POS_LH_C5R3 POS_LH_C6R3 \
-  POS_LH_C1R4 POS_LH_C2R4 POS_LH_C3R4 POS_LH_C4R4 POS_LH_C5R4 POS_LH_C6R4 \
-              POS_LH_C2R5 POS_LH_C3R5 POS_LH_C4R5
-
-#define RIGHT_HAND_KEYS \
-  POS_RH_C1R1 POS_RH_C2R1 POS_RH_C3R1 POS_RH_C4R1 POS_RH_C5R1 POS_RH_C6R1 \
-  POS_RH_C1R2 POS_RH_C2R2 POS_RH_C3R2 POS_RH_C4R2 POS_RH_C5R2 POS_RH_C6R2 \
-  POS_RH_C1R3 POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3 POS_RH_C5R3 POS_RH_C6R3 \
-  POS_RH_C1R4 POS_RH_C2R4 POS_RH_C3R4 POS_RH_C4R4 POS_RH_C5R4 POS_RH_C6R4 \
-              POS_RH_C2R5 POS_RH_C3R5 POS_RH_C4R5
-
-#define THUMB_KEYS \
-  POS_LH_T1 POS_LH_T2 POS_LH_T3 \
 
 
 /* Left-hand HRMs. */
@@ -183,30 +104,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 // define nav space
 #define NAV_SPACE &lt LAYER_Navigation SPACE
 
-ZMK_COMBO(at,         &kp AT,     POS_LH_C2R2 POS_LH_C3R2, ALL, 25)
-ZMK_COMBO(panic,      &to 0,      POS_LH_C2R2 POS_LH_C1R2, ALL, 25)
-
-ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_T2, ALL, 25)
-
-ZMK_COMBO(esc,        &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
-ZMK_COMBO(colon,      &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
-ZMK_COMBO(semicolon,  &kp SCLN,  POS_RH_C2R3 POS_RH_C3R4, ALL, 25)
-
-ZMK_COMBO(left_ctl,  &skq LCTL, POS_LH_C4R3 POS_LH_C3R3, ALL, 25)
-ZMK_COMBO(eight_ctl,  &skq RCTL, POS_RH_C4R3 POS_RH_C3R3, ALL, 25)
-ZMK_COMBO(left_alt,  &skq LALT, POS_LH_C4R2 POS_LH_C3R2, ALL, 25)
-ZMK_COMBO(left_gui,  &skq LGUI, POS_LH_C2R4 POS_LH_C3R4, ALL, 25)
-ZMK_COMBO(right_gui,  &skq RGUI, POS_RH_C2R4 POS_RH_C3R4, ALL, 25)
-
-ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
-ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
-ZMK_COMBO(lpar,  &kp LPAR, POS_LH_C3R2 POS_LH_C3R3, ALL, 25)
-ZMK_COMBO(lbrc,  &kp LBRC, POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
-ZMK_COMBO(gt,    &kp GT,   POS_RH_C1R2 POS_RH_C1R3, ALL, 25)
-ZMK_COMBO(rbkt,  &kp RBKT, POS_RH_C2R2 POS_RH_C2R3, ALL, 25)
-ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
-ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
-ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
+#include "combos.dtsi"
 
 // Define mod-morph with a *single* mod trigger for less repetition.
 #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
