@@ -195,8 +195,8 @@ ZMK_COMBO(semicolon,  &kp SCLN,  POS_RH_C2R3 POS_RH_C3R4, ALL, 25)
 ZMK_COMBO(left_ctl,  &skq LCTL, POS_LH_C4R3 POS_LH_C3R3, ALL, 25)
 ZMK_COMBO(eight_ctl,  &skq RCTL, POS_RH_C4R3 POS_RH_C3R3, ALL, 25)
 ZMK_COMBO(left_alt,  &skq LALT, POS_LH_C4R2 POS_LH_C3R2, ALL, 25)
-ZMK_COMBO(left_gui,  &skq LGUI, POS_LH_C4R4 POS_LH_C3R4, ALL, 25)
-ZMK_COMBO(right_gui,  &skq RGUI, POS_RH_C4R4 POS_RH_C3R4, ALL, 25)
+ZMK_COMBO(left_gui,  &skq LGUI, POS_LH_C2R4 POS_LH_C3R4, ALL, 25)
+ZMK_COMBO(right_gui,  &skq RGUI, POS_RH_C2R4 POS_RH_C3R4, ALL, 25)
 
 ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
 ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
@@ -480,7 +480,7 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
                 &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
                &trans     &trans     &kp N7     &kp N8     &kp N9       &kp STAR                                              &kp BSLH   &kp HASH     &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
                &trans   &kp SCLN     &kp N4     &kp N5     &kp N6       &kp PLUS                                              &kp CARET  &kp MINUS   &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
- &magic LAYER_Magic 0     &trans     &kp N1     &kp N2     &kp N3  &kp LS(LC(V))                                             &trans      &kp COLON   &kp KP_N3  &kp KP_ENTER        &kp EQUAL &to LAYER_Base
+ &magic LAYER_Magic 0     &trans     &kp N1     &kp N2     &kp N3  &kp LS(LC(V))                                             &trans      &kp COLON   &kp COMMA       &kp DOT     &kp SLASH &to LAYER_Base
                                       &none     &trans     &trans                                                                        &kp KP_N0  &kp KP_DOT      &kp BSPC
                                                            &kp N0 &kp SPACE  &trans              &trans  &trans  &kp KP_N0
             >;
