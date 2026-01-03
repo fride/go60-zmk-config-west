@@ -183,7 +183,10 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 // define nav space
 #define NAV_SPACE &lt LAYER_Navigation SPACE
 
-ZMK_COMBO(at,    &kp AT,     POS_LH_C2R2 POS_LH_C3R2, ALL, 25)
+ZMK_COMBO(at,         &kp AT,     POS_LH_C2R2 POS_LH_C3R2, ALL, 25)
+ZMK_COMBO(panic,      &to 0,      POS_LH_C2R2 POS_LH_C1R2, ALL, 25)
+
+ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_t2, ALL, 25)
 
 ZMK_COMBO(esc,        &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
 ZMK_COMBO(colon,      &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
@@ -243,7 +246,7 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
         };
         combo_cmb_sz {
             key-positions = <POS_LH_C5R3 POS_LH_C4R3>;
-            bindings = <&ae>;
+            bindings = <&sz>;
             timeout-ms = <35>;
         };
         combo_cmb_v{
@@ -252,26 +255,6 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
             timeout-ms = <35>;
         };
 
-        combo_cmb_left_ctrl {
-            key-positions = <POS_LH_C3R3 POS_LH_C4R3>;
-            bindings = <&sk LCTL>;
-            timeout-ms = <35>;
-        };
-        combo_cmb_right_ctrl {
-            key-positions = <POS_RH_C3R3 POS_RH_C4R3>;
-            bindings = <&sk RCTL>;
-            timeout-ms = <35>;
-        };
-        combo_cmb_left_gui{
-            key-positions = <POS_LH_C2R4 POS_LH_C1R4>;
-            bindings = <&sk LGUI>;
-            timeout-ms = <35>;
-        };
-        combo_cmb_right_gui {
-            key-positions = <POS_RH_C2R4 POS_RH_C1R4>;
-            bindings = <&sk RGUI>;
-            timeout-ms = <35>;
-        };
         combo_cmb_delete {
             key-positions = <POS_LH_C2R3 POS_LH_C1R3>;
             bindings = <&kp DEL>;
