@@ -166,7 +166,7 @@ ZMK_HOLD_TAP(hmr,
 
 // num word on thumb
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-#define SMART_NUM &smart_num NUM 0
+#define SMART_NUM &smart_num LAYER_Number 0
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
 ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>;
@@ -439,7 +439,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C       HR_E       HR_I       HR_A      &skq RSFT
  &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P    &kp SQT   &kp SCLN     &kp DOT   &kp N1
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &kp SPACE   &kp N1 &kp N2                         &kp N1  &lt LAYER_Number &arcane
+                                                      &kp SPACE   &kp N1 &kp N2                         &kp N1  SMART_NUM &arcane
             >;
         };
 
