@@ -340,6 +340,7 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
              arc_kt { trigger-keys = <K>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
              arc_dt { trigger-keys = <D>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
              arc_fr { trigger-keys = <F>; max-prior-idle-ms = <500>; bindings = <&kp R>; }; // todo - better ff?
+             arc_vim { trigger-keys = <ESC>; max-prior-idle-ms = <500>; bindings = <&kp COLON>; }
         };
 
         magic: magic {
