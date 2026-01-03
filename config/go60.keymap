@@ -461,7 +461,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
                &trans  &kp LC(Y)   &kp LEFT   &kp DOWN  &kp RIGHT      &kp PG_DN                                              &kp KP_N4  &kp KP_N5   &kp KP_N6   &kp KP_PLUS  &kp KP_MULTIPLY     &kp KP_NUM
  &magic LAYER_Magic 0  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LS(LC(V))                                              &kp KP_N1  &kp KP_N2   &kp KP_N3  &kp KP_ENTER        &kp EQUAL &to LAYER_Base
                                       &none     &trans     &trans                                                                        &kp KP_N0  &kp KP_DOT      &kp BSPC
-                                                             &mo LAYER_SymbolNav  &trans  &trans              &trans  &trans  &kp KP_N0
+                                                             &mo LAYER_Navigation &trans  &trans              &trans  &trans  &kp KP_N0
             >;
         };
 
