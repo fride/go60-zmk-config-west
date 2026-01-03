@@ -416,9 +416,9 @@ ZMK_HOLD_TAP(hmr,
         layer_Game {
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
-              &kp TAB   &kp K      &kp W    &kp N     &kp G   &kp Q                                                       &kp EQUAL   &kp U      &kp O      &kp Y     &kp J     &kp BSLH
-            &skq LSFT   HL_P        HL_S     HL_R      HL_D   &kp M                                                       &kp MINUS    HR_I       HR_E       HR_A      HR_H      &skq RSFT
- &magic LAYER_Magic 0   &kp B      &kp F    &kp L     &kp C   &kp Z                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &keypad_td
+              &kp TAB   &kp Q      &kp W    &kp E     &kp R   &kp T                                                       &kp Y       &kp U      &kp I      &kp O     &kp P     &kp BSLH
+            &skq LSFT   &kp A      &kp S    &kp D     &kp F   &kp G                                                       &kp H       &kp J       &kp K     &kp L     &kp SCLN      &skq RSFT
+ &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &as T   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Keypad SPACE
             >;
