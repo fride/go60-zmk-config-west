@@ -180,9 +180,18 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 // define nav space
 #define NAV_SPACE &lt LAYER_Navigation SPACE
 
+ZMK_COMBO(at,    &kp AT,     POS_LH_C2R2 POS_LH_C3R2, ALL, 25)
 
-ZMK_COMBO(esc,    &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
-ZMK_COMBO(colon,  &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(esc,        &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
+ZMK_COMBO(colon,      &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(semicolon,  &kp SCLN,  POS_RH_C2R3 POS_RH_C3R4, ALL, 25)
+
+ZMK_COMBO(left_ctl,  &skq LCTL, POS_LH_C4R3 POS_LH_C3R3, ALL, 25)
+ZMK_COMBO(eight_ctl,  &skq RCTL, POS_RH_C4R3 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(left_alt,  &skq LALT, POS_LH_C4R2 POS_LH_C3R2, ALL, 25)
+ZMK_COMBO(right_alt,  &skq LALT, POS_RH_C4R2 POS_RH_C3R2, ALL, 25)
+ZMK_COMBO(left_gui,  &skq LGUI, POS_LH_C4R4 POS_LH_C3R4, ALL, 25)
+ZMK_COMBO(right_gui,  &skq RGUI, POS_RH_C4R4 POS_RH_C3R4, ALL, 25)
 
 ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
 ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
@@ -194,7 +203,13 @@ ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
 ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
 ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
 
+// Define mod-morph with a *single* mod trigger for less repetition.
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
+  ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
+                bindings = <BINDING1>, <BINDING2>;)
 
+                SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
+                SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)    
 
 / {
     combos {
@@ -282,9 +297,9 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
         leader_de: leader_de {
             compatible = "zmk,behavior-leader-key";
             #binding-cells = <0>;
-            de_ae { sequence = <A E>; bindings = <&ae>; };
-            de_oe { sequence = <O E>; bindings = <&oe>; };
-            de_ue { sequence = <U E>; bindings = <&ue>; };
+            de_ae { sequence = <A>; bindings = <&ae>; };
+            de_oe { sequence = <O>; bindings = <&oe>; };
+            de_ue { sequence = <U>; bindings = <&ue>; };
         };
         skq: sticky_key_quick_release {
             compatible = "zmk,behavior-sticky-key";
@@ -457,7 +472,7 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Game
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
-            &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C        HR_E       HR_I       HR_A        &skq RSFT
+           &leader_de   &kp S      &kp R    &kp N     &kp T   &kp M                                                           &kp Y   &kp C       &kp E      &kp I      &kp A        &leader_de
  &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P   &kp COMMA    &kp DOT  &kp SLASH           &kp N1
                                &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
                                                       NAV_SPACE   &skq LCTL &skq RALT                          &skq LGUI  SMART_NUM &arcane
@@ -489,7 +504,7 @@ ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
         layer_Navigation {
             bindings = <
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
-             &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp DEL            &kp UP    &kp BSPC         &kp K_APP    &kp F12
+             &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp BSPC           &kp UP      &kp DEL         &kp K_APP    &kp F12
              &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
  &magic LAYER_Magic 0   &kp HASH   &kp LBKT    &kp RBKT   &kp LBRC   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
