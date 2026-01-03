@@ -171,6 +171,9 @@ ZMK_HOLD_TAP(hmr,
 
 // num word on thumb
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
+&num_word {
+  continue-list = <BSPC DEL DOT UNDERSCORE COMMA>;
+};
 #define SMART_NUM &smart_num LAYER_Number 0
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
