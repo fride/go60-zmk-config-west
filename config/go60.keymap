@@ -20,10 +20,11 @@
 
 // layers
 #define LAYER_Base 0
-#define LAYER_Keypad 1
-#define LAYER_SymbolNav 2
-#define LAYER_Magic 3
-#define LAYER_Factory 4
+#define LAYER_Game 1
+#define LAYER_Keypad 2
+#define LAYER_SymbolNav 3
+#define LAYER_Magic 4
+#define LAYER_Factory 5
 
 
 #define POS_LH_C6R1 0
@@ -127,15 +128,15 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-on-release;
 ) 
 
-#define HL_P &hml LGUI P
-#define HL_S &hml LALT S
-#define HL_R &hml LSFT R
-#define HL_D &hml LCTL D 
+#define HL_S &hml LGUI S
+#define HL_R &hml LALT R
+#define HL_N &hml LSFT N
+#define HL_T &hml LCTL T 
 
-#define HR_I &hmr RCTL I
+#define HR_C &hmr RCTL C
 #define HR_E &hmr RSFT E
-#define HR_A &hmr LALT A
-#define HR_H &hmr RGUI H
+#define HR_I &hmr LALT I
+#define HR_A &hmr RGUI A
 
 / {
     combos {
@@ -268,11 +269,13 @@ ZMK_HOLD_TAP(hmr,
         arcane: arcane {
              compatible = "zmk,behavior-adaptive-key";
              #binding-cells = <0>;
-             bindings = <&kp N>;
-             arc_eu { trigger-keys = <E>; max-prior-idle-ms = <500>; bindings = <&kp U>; };
-             arc_ue { trigger-keys = <U>; max-prior-idle-ms = <500>; bindings = <&kp E>; };
+             bindings = <&skq LSFT>;
+             arc_eo { trigger-keys = <E>; max-prior-idle-ms = <500>; bindings = <&kp O>; };
+             arc_au { trigger-keys = <A>; max-prior-idle-ms = <500>; bindings = <&kp U>; };
              arc_rl { trigger-keys = <R>; max-prior-idle-ms = <500>; bindings = <&kp L>; };
              arc_kt { trigger-keys = <K>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
+             arc_dt { trigger-keys = <D>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
+             arc_fr { trigger-keys = <F>; max-prior-idle-ms = <500>; bindings = <&kp R>; }; // todo - better ff?
         };
 
         magic: magic {
@@ -400,6 +403,17 @@ ZMK_HOLD_TAP(hmr,
     keymap {
         compatible = "zmk,keymap";
         layer_Base {
+            bindings = <
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &to 0
+              &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G      &kp O      &kp U  &kp COMMA     &kp BSLH
+            &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C       HR_E       HR_I       HR_A      &skq RSFT
+ &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P    &kp SQT   &kp SCLN     &kp DOT   &keypad_td
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
+                                                      &lt LAYER_Keypad SPACE   &kp N1 &kp N2                         &kp N1  &kp N2  &arcane
+            >;
+        };
+
+        layer_Game {
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
               &kp TAB   &kp K      &kp W    &kp N     &kp G   &kp Q                                                       &kp EQUAL   &kp U      &kp O      &kp Y     &kp J     &kp BSLH
