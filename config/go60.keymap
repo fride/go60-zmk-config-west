@@ -19,6 +19,10 @@
 #include "zmk-helpers/helper.h"
 #include <behaviors/num_word.dtsi>
 
+
+#define XXX &none
+#define ___ &trans
+
 // layers
 #define LAYER_Base 0
 #define LAYER_Game 1
@@ -145,6 +149,7 @@ ZMK_HOLD_TAP(hmr,
   quick-tap-ms = <QUICK_TAP_MS>;
 };
 
+
 #define HL_S &hml LGUI S
 #define HL_R &hml LALT R
 #define HL_N &hml LSFT N
@@ -174,6 +179,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 
 // define nav space
 #define NAV_SPACE &lt LAYER_Navigation SPACE
+
 
 / {
     combos {
@@ -434,10 +440,10 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9     &kp N0    &to LAYER_Game
-              &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G      &kp O      &kp U  &kp COMMA     &kp BSLH
-            &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C       HR_E       HR_I       HR_A      &skq RSFT
- &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P    &kp SQT   &kp SCLN     &kp DOT   &kp N1
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Game
+              &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
+            &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C        HR_E       HR_I       HR_A        &skq RSFT
+ &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P   &kp COMMA    &kp DOT  &kp SLASH           &kp N1
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
                                                       &kp SPACE   &kp N1 &kp N2                         &kp N1  SMART_NUM &arcane
             >;
@@ -454,14 +460,14 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             >;
         };
 
-        layer_Keypad {
+        layer_Number{
             bindings = <
                 &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
-               &trans      &none   &kp HOME     &kp UP    &kp END      &kp PG_UP                                              &kp KP_N7  &kp KP_N8   &kp KP_N9  &kp KP_MINUS     &kp KP_SLASH        &kp F12
-               &trans  &kp LC(Y)   &kp LEFT   &kp DOWN  &kp RIGHT      &kp PG_DN                                              &kp KP_N4  &kp KP_N5   &kp KP_N6   &kp KP_PLUS  &kp KP_MULTIPLY     &kp KP_NUM
- &magic LAYER_Magic 0  &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)  &kp LS(LC(V))                                              &kp KP_N1  &kp KP_N2   &kp KP_N3  &kp KP_ENTER        &kp EQUAL &to LAYER_Base
+               &trans     &trans     &kp N7     &kp N8     &kp N9       &kp STAR                                              &kp BSLH   &kp HASH     &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
+               &trans  &kp SCLN      &kp N5     &kp N3     &kp N1       &kp PLUS                                              &kp CARET  &kp MINUS   &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
+ &magic LAYER_Magic 0     &trans      &kp N1     &kp N2     &kp N9  &kp LS(LC(V))                                             &trans        &kp COLON   &kp KP_N3  &kp KP_ENTER        &kp EQUAL &to LAYER_Base
                                       &none     &trans     &trans                                                                        &kp KP_N0  &kp KP_DOT      &kp BSPC
-                                                             &mo LAYER_Navigation &trans  &trans              &trans  &trans  &kp KP_N0
+                                                           &kp N0 &kp SPACE  &trans              &trans  &trans  &kp KP_N0
             >;
         };
 
