@@ -155,6 +155,15 @@ ZMK_HOLD_TAP(hmr,
 #define HR_I &hmr LALT I
 #define HR_A &hmr RGUI A
 
+// Trigger tap-action on all interrupts.
+#define MT_CORE                                                                \
+  flavor = "tap-preferred";                                                    \
+  tapping-term-ms = <220>;                                                     \
+  quick-tap-ms = <220>;                                                        \
+  hold-trigger-key-positions = <0>;
+
+&mt { MT_CORE };
+
 // num word on thumb
 // Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
 #define SMART_NUM &smart_num NUM 0
@@ -430,7 +439,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             &skq LSFT    HL_S       HL_R     HL_N      HL_T   &kp M                                                           &kp Y    HR_C       HR_E       HR_I       HR_A      &skq RSFT
  &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P    &kp SQT   &kp SCLN     &kp DOT   &keypad_td
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &kp SPACE   &kp N1 &kp N2                         &kp N1  SMART_NUM  &arcane
+                                                      &kp SPACE   &kp N1 &kp N2                         &kp N1  &lt LAYER_Number &arcane
             >;
         };
 
