@@ -181,6 +181,20 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 #define NAV_SPACE &lt LAYER_Navigation SPACE
 
 
+ZMK_COMBO(esc,    &kp ESC,   POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(colon,  &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
+
+ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
+ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
+ZMK_COMBO(lpar,  &kp LPAR, POS_LH_C3R2 POS_LH_C3R3, ALL, 25)
+ZMK_COMBO(lbrc,  &kp LBRC, POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
+ZMK_COMBO(gt,    &kp GT,   POS_RH_C1R2 POS_RH_C1R3, ALL, 25)
+ZMK_COMBO(rbkt,  &kp RBKT, POS_RH_C2R2 POS_RH_C2R3, ALL, 25)
+ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
+
+
+
 / {
     combos {
         compatible = "zmk,combos";
@@ -464,8 +478,8 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             bindings = <
                 &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
                &trans     &trans     &kp N7     &kp N8     &kp N9       &kp STAR                                              &kp BSLH   &kp HASH     &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
-               &trans  &kp SCLN      &kp N5     &kp N3     &kp N1       &kp PLUS                                              &kp CARET  &kp MINUS   &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
- &magic LAYER_Magic 0     &trans      &kp N1     &kp N2     &kp N9  &kp LS(LC(V))                                             &trans        &kp COLON   &kp KP_N3  &kp KP_ENTER        &kp EQUAL &to LAYER_Base
+               &trans   &kp SCLN     &kp N4     &kp N5     &kp N6       &kp PLUS                                              &kp CARET  &kp MINUS   &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
+ &magic LAYER_Magic 0     &trans     &kp N1     &kp N2     &kp N3  &kp LS(LC(V))                                             &trans      &kp COLON   &kp KP_N3  &kp KP_ENTER        &kp EQUAL &to LAYER_Base
                                       &none     &trans     &trans                                                                        &kp KP_N0  &kp KP_DOT      &kp BSPC
                                                            &kp N0 &kp SPACE  &trans              &trans  &trans  &kp KP_N0
             >;
