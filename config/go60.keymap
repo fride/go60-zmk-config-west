@@ -186,7 +186,7 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 ZMK_COMBO(at,         &kp AT,     POS_LH_C2R2 POS_LH_C3R2, ALL, 25)
 ZMK_COMBO(panic,      &to 0,      POS_LH_C2R2 POS_LH_C1R2, ALL, 25)
 
-ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_t2, ALL, 25)
+ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_T2, ALL, 25)
 
 ZMK_COMBO(esc,        &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
 ZMK_COMBO(colon,      &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
