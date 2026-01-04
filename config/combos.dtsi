@@ -10,7 +10,6 @@
 ZMK_COMBO(at,             &kp AT,         POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
 ZMK_COMBO(hash,           &kp HASH,       POS_LH_C3R2 POS_LH_C3R3, ALL, 25)
 ZMK_COMBO(dollar,         &kp DOLLAR,     POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
-ZMK_COMBO(dollar,         &kp PERC,     POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
 // vertical bottom
 
 
