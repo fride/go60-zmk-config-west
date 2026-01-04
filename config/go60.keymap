@@ -28,8 +28,9 @@
 #define LAYER_Game 1
 #define LAYER_Number 2
 #define LAYER_Navigation 3
-#define LAYER_Magic 4
-#define LAYER_Factory 5
+#define LAYER_Symbol 4
+#define LAYER_Magic 5
+#define LAYER_Factory 6
 
 
 /* Left-hand HRMs. */
@@ -53,6 +54,27 @@ ZMK_HOLD_TAP(hmr,
     hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
     hold-trigger-on-release;
 ) 
+ZMK_HOLD_TAP(hll,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&mo>, <&kp>;
+    hold-trigger-key-positions = <RIGHT_HAND_KEYS THUMB_KEYS>;
+    hold-trigger-on-release;
+)
+
+ZMK_HOLD_TAP(hlr,
+    flavor = "balanced";
+    tapping-term-ms = <280>;
+    quick-tap-ms = <175>;
+    require-prior-idle-ms = <150>;
+    bindings = <&mo>, <&kp>;
+    hold-trigger-key-positions = <LEFT_HAND_KEYS THUMB_KEYS>;
+    hold-trigger-on-release;
+) 
+
+
 #define QUICK_TAP_MS 175
 
 &sk {
@@ -71,15 +93,6 @@ ZMK_HOLD_TAP(hmr,
 };
 
 
-#define HL_S &hml LSFT S
-#define HL_R &hml LCTL R
-#define HL_N &hml LALT N
-#define HL_T &hml LGUI T 
-
-#define HR_C &hmr RGUI C
-#define HR_E &hmr LALT E
-#define HR_I &hmr RCTL I
-#define HR_A &hmr RSFT A
 
 // Trigger tap-action on all interrupts.
 #define MT_CORE                                                                \
@@ -101,8 +114,27 @@ ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
 ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>;
               tapping-term-ms = <200>;)
 
-// define nav space
+// define home row keys and nav space
 #define NAV_SPACE &lt LAYER_Navigation SPACE
+
+// left
+#define HML_S &hml RALT S
+#define HML_R &hll LAYER_Symbol R
+#define HML_N &kp N //&hml LALT N
+#define HML_T &hll LAYER_Navigation T 
+#define HML_J &hml LSFT J
+#define HML_X &hml LCTL X
+#define HML_B &hml LALT B
+#define HML_K &hml LGUI K 
+//right
+#define HMR_C &hlr LAYER_Numbers C
+#define HMR_E & kp E // &hmr LALT E
+#define HMR_I &hlr LAYER_Symbols I
+#define HMR_A &hmr RALT A
+#define HMR_P     &hmr RGUI P
+#define HMR_COMMA &hmr LALT COMMA
+#define HMR_DOT   &hmr RCTL DOT
+#define HMR_SLASH &hmr RSFT SLASH
 
 #include "combos.dtsi"
 
@@ -111,8 +143,8 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
 
-                SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)
-                SIMPLE_MORPH(qexcl, SFT, &kp QMARK, &kp EXCL)    
+SIMPLE_MORPH(dot_collon, SFT, &kp DOT,   &kp COLON)
+SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)    
 
 / {
     combos {
@@ -356,8 +388,8 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Game
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
-           &leader_de   &kp S      &kp R    &kp N     &kp T   &kp M                                                           &kp Y   &kp C       &kp E      &kp I      &kp A        &leader_de
- &magic LAYER_Magic 0   &kp J      &kp X    &kp B     &kp K   &kp Q                                                           &kp Z   &kp P   &kp COMMA    &kp DOT  &kp SLASH           &kp N1
+           &leader_de   HML_S      HML_R    HML_N     HML_T   &kp M                                                           &kp Y   HMR_C       HMR_E      HMR_I      HMR_A        &leader_de
+ &magic LAYER_Magic 0   HML_J      HML_X    HML_B     HML_K   &kp Q                                                           &kp Z   HML_P   HML_COMMA    HML_DOT  HML_SLASH           &kp N1
                                &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
                                                       NAV_SPACE   &skq LCTL &skq RALT                          &skq LGUI  SMART_NUM &arcane
             >;
@@ -386,6 +418,16 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
         };
 
         layer_Navigation {
+            bindings = <
+              &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
+             &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp BSPC           &kp UP      &kp DEL         &kp K_APP    &kp F12
+             &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
+ &magic LAYER_Magic 0   &kp HASH   &kp LBKT    &kp RBKT   &kp LBRC   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
+                                  &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
+                                                            &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
+            >;
+        };
+        layer_Symbol {
             bindings = <
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
              &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp BSPC           &kp UP      &kp DEL         &kp K_APP    &kp F12
