@@ -440,7 +440,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
             bindings = <
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
              &kp SLCK  &kp GRAVE     &kp LT      &kp GT  &kp MINUS   &kp PIPE                                      &kp CARET &kp LBRC         &kp RBRC   &kp DOLLAR            &arrow  &kp F12
-             &kp CAPS    &kp EXL   &kp STAR   &kp SLASH  &kp EQUAL   &kp AMPS                                      &kp HASH  &kp LPAR         &kp RPAR     &kp SCLN           &kp DQT  &kp PSCRN
+             &kp CAPS   &kp EXCL   &kp STAR   &kp SLASH  &kp EQUAL   &kp AMPS                                      &kp HASH  &kp LPAR         &kp RPAR     &kp SCLN           &kp DQT  &kp PSCRN
  &magic LAYER_Magic 0  &kp TILDE   &kp PLUS    &kp LBKT   &kp RBKT  &kp PRCNT                                      &kp AT    &kp COLON       &kp COMMA      &kp DOT           &kp SQT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
                                                             &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
