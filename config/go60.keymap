@@ -400,7 +400,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
            &leader_de   HML_S      HML_R    HML_N     HML_T   &kp M                                                           &kp Y   HMR_C       HMR_E      HMR_I      HMR_A        &leader_de
  &magic LAYER_Magic 0   HML_J      HML_X    HML_B     HML_K   &kp Q                                                           &kp Z   HMR_P   HMR_COMMA    HMR_DOT  HMR_SLASH           &kp N1
                                &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
-                                                      NAV_SPACE   &skq LCTL &skq RALT                          &skq LGUI  SMART_NUM &arcane
+                                                      NAV_SPACE   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT &arcane
             >;
         };
 
@@ -418,11 +418,11 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
         layer_Number{
             bindings = <
                 &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
-               &trans     &trans     &kp N7     &kp N8     &kp N9       &kp STAR                                              &kp BSLH   &kp HASH     &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
-               &trans   &kp SCLN     &kp N4     &kp N5     &kp N6       &kp PLUS                                              &kp CARET  &kp MINUS   &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
- &magic LAYER_Magic 0     &trans     &kp N1     &kp N2     &kp N3  &kp LS(LC(V))                                             &trans      &kp COLON   &kp COMMA       &kp DOT     &kp SLASH &to LAYER_Base
+               &trans  &kp SLASH     &kp N1     &kp N2     &kp N3       &kp STAR                                              &kp BSLH   &kp HASH     &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
+               &trans  &kp MINUS     &kp N4     &kp N5     &kp N6       &kp PLUS                                              &kp CARET  &trans      &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
+ &magic LAYER_Magic 0      &kp X     &kp N7     &kp N8     &kp N9       &kp PRCNT                                             &trans     &trans      &kp COMMA       &kp DOT     &kp SLASH &to LAYER_Base
                                       &none     &trans     &trans                                                                        &kp KP_N0  &kp KP_DOT      &kp BSPC
-                                                           &kp N0 &kp SPACE  &trans              &trans  &trans  &kp KP_N0
+                                                            &kp SPACE  &trans &trans                                     &trans  &trans  &kp KP_N0
             >;
         };
 
@@ -431,7 +431,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
              &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp BSPC           &kp UP      &kp DEL         &kp K_APP    &kp F12
              &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
- &magic LAYER_Magic 0   &kp HASH   &kp LBKT    &kp RBKT   &kp LBRC   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
+ &magic LAYER_Magic 0  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
                                                             &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
             >;
