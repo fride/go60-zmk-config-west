@@ -127,9 +127,9 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 #define HML_B &hml LALT B
 #define HML_K &hml LGUI K 
 //right
-#define HMR_C &hlr LAYER_Numbers C
+#define HMR_C &hlr LAYER_Number C
 #define HMR_E & kp E // &hmr LALT E
-#define HMR_I &hlr LAYER_Symbols I
+#define HMR_I &hlr LAYER_Symbol I
 #define HMR_A &hmr RALT A
 #define HMR_P     &hmr RGUI P
 #define HMR_COMMA &hmr LALT COMMA
