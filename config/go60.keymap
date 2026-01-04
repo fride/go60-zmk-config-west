@@ -389,7 +389,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Game
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
            &leader_de   HML_S      HML_R    HML_N     HML_T   &kp M                                                           &kp Y   HMR_C       HMR_E      HMR_I      HMR_A        &leader_de
- &magic LAYER_Magic 0   HML_J      HML_X    HML_B     HML_K   &kp Q                                                           &kp Z   HML_P   HML_COMMA    HML_DOT  HML_SLASH           &kp N1
+ &magic LAYER_Magic 0   HML_J      HML_X    HML_B     HML_K   &kp Q                                                           &kp Z   HMR_P   HMR_COMMA    HMR_DOT  HMR_SLASH           &kp N1
                                &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
                                                       NAV_SPACE   &skq LCTL &skq RALT                          &skq LGUI  SMART_NUM &arcane
             >;
