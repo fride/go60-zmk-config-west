@@ -120,17 +120,19 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 // left
 #define HML_S &hml RALT S
 #define HML_R &hll LAYER_Symbol R
-#define HML_N &kp N //&hml LALT N
+#define HML_N &kp N
 #define HML_T &hll LAYER_Navigation T 
+
 #define HML_J &hml LSFT J
 #define HML_X &hml LCTL X
 #define HML_B &hml LALT B
 #define HML_K &hml LGUI K 
 //right
 #define HMR_C &hlr LAYER_Number C
-#define HMR_E & kp E // &hmr LALT E
+#define HMR_E &kp E 
 #define HMR_I &hlr LAYER_Symbol I
 #define HMR_A &hmr RALT A
+
 #define HMR_P     &hmr RGUI P
 #define HMR_COMMA &hmr LALT COMMA
 #define HMR_DOT   &hmr RCTL DOT
