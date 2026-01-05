@@ -33,7 +33,6 @@
 #define LAYER_Magic 6
 #define LAYER_Factory 7
 
-
 /* Left-hand HRMs. */
 ZMK_HOLD_TAP(hml,
     flavor = "balanced";
@@ -118,7 +117,16 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 // define home row keys and nav space
 #define NAV_SPACE &lt LAYER_Navigation SPACE
 
+//
+
+
+
 // left
+
+
+
+
+
 #define HML_S &hml RALT S
 #define HML_R &hll LAYER_Symbol R
 #define HML_N &kp N
@@ -420,12 +428,12 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
 
         layer_Sturdy {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to LAYER_Game
-              &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp B   &magic_st       &kp U      &kp O     &kp Q     &kp BSLH
-            &skq LSFT   &kp S      &kp T    &kp R     &kp D   &kp Y                                                       &kp H       &kp N       &kp E      &kp I     &kp A      &skq RSFT
- &magic LAYER_Magic 0   &kp Z      &kp K    &kp J     &kp G   &kp W                                                       &kp X       &kp H     &kp COMMA  &kp DOT   &kp SQT   &kp N1
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Number SPACE
+            &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8         &kp N9        &kp N0    &to LAYER_Game
+              &kp TAB         &kp V        &kp M        &kp L        &kp C   &kp P                                                       &kp B    &magic_st            &kp U          &kp O         &kp Q     &kp BSLH
+            &skq LSFT         &kp S   &hll SYM T        &kp R   &hll NAV D   &kp Y                                                       &kp H   &hlr NUM N            &kp E     &hlr SYM I         &kp A      &skq RSFT
+ &magic LAYER_Magic 0   &hml LSFT Z  &hml LCTL K  &hml LALT J  &hml LGUI G   &kp W                                                       &kp X  &hmr RGUI H  &hmr LALT COMMA  &hmr LCTL DOT  &hmr RSFT SQT   &kp N1
+                               &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
+                                                      NAV_SPACE   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT &arcane
             >;
         };
 
