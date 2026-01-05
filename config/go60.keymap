@@ -25,12 +25,13 @@
 
 // layers
 #define LAYER_Base 0
-#define LAYER_Game 1
-#define LAYER_Number 2
-#define LAYER_Navigation 3
-#define LAYER_Symbol 4
-#define LAYER_Magic 5
-#define LAYER_Factory 6
+#define LAYER_Sturdy 1
+#define LAYER_Game 2
+#define LAYER_Number 3
+#define LAYER_Navigation 4
+#define LAYER_Symbol 5
+#define LAYER_Magic 6
+#define LAYER_Factory 7
 
 
 /* Left-hand HRMs. */
@@ -275,6 +276,19 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
              arc_vim { trigger-keys = <ESC>; max-prior-idle-ms = <500>; bindings = <&kp COLON>; };
         };
 
+        magic_st: magic_s{
+             compatible = "zmk,behavior-adaptive-key";
+             #binding-cells = <0>;
+             bindings = <&kp N>;
+             arc_ue { trigger-keys = <E>; max-prior-idle-ms = <500>; bindings = <&kp U>; };
+             arc_au { trigger-keys = <A>; max-prior-idle-ms = <500>; bindings = <&kp U>; };
+             arc_rl { trigger-keys = <R>; max-prior-idle-ms = <500>; bindings = <&kp L>; };
+             arc_kt { trigger-keys = <K>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
+             arc_dt { trigger-keys = <D>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
+             arc_mt { trigger-keys = <T>; max-prior-idle-ms = <500>; bindings = <&kp M>; }; // todo - better ff?
+             arc_vim { trigger-keys = <ESC>; max-prior-idle-ms = <500>; bindings = <&kp COLON>; };
+        };
+
         magic: magic {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -395,12 +409,23 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
         compatible = "zmk,keymap";
         layer_Base {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Game
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Sturdy
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
            &leader_de   HML_S      HML_R    HML_N     HML_T   &kp M                                                           &kp Y   HMR_C       HMR_E      HMR_I      HMR_A        &leader_de
  &magic LAYER_Magic 0   HML_J      HML_X    HML_B     HML_K   &kp Q                                                           &kp Z   HMR_P   HMR_COMMA    HMR_DOT  HMR_SLASH           &kp N1
                                &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
                                                       NAV_SPACE   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT &arcane
+            >;
+        };
+
+        layer_Sturdy {
+            bindings = <
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to Layer_GAME
+              &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp B   &magic_st       &kp U      &kp O     &kp Q     &kp BSLH
+            &skq LSFT   &kp S      &kp T    &kp R     &kp D   &kp Y                                                       &kp H       &kp N       &kp E      &kp I     &kp A      &skq RSFT
+ &magic LAYER_Magic 0   &kp Z      &kp K    &kp J     &kp G   &kp W                                                       &kp X       &kp H     &kp COMMA  &kp DOT   &kp SQT   &kp N1
+                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
+                                                      &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Number SPACE
             >;
         };
 
