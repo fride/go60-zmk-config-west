@@ -27,9 +27,9 @@
 #define LAYER_Base 0
 #define LAYER_Sturdy 1
 #define LAYER_Game 2
-#define LAYER_Number 3
-#define LAYER_Navigation 4
-#define LAYER_Symbol 5
+#define NUM 3
+#define NAV 4
+#define SYM 5
 #define LAYER_Magic 6
 #define LAYER_Factory 7
 
@@ -108,14 +108,14 @@ ZMK_HOLD_TAP(hlr,
 &num_word {
   continue-list = <BSPC DEL DOT UNDERSCORE COMMA>;
 };
-#define SMART_NUM &smart_num LAYER_Number 0
+#define SMART_NUM &smart_num NUM 0
 ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
              tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>;
+ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
               tapping-term-ms = <200>;)
 
 // define home row keys and nav space
-#define NAV_SPACE &lt LAYER_Navigation SPACE
+#define NAV_SPACE &lt NAV SPACE
 
 //
 
@@ -128,18 +128,18 @@ ZMK_TAP_DANCE(num_dance, bindings = <&num_word LAYER_Number>, <&sl LAYER_Number>
 
 
 #define HML_S &hml RALT S
-#define HML_R &hll LAYER_Symbol R
+#define HML_R &hll SYM R
 #define HML_N &kp N
-#define HML_T &hll LAYER_Navigation T 
+#define HML_T &hll NAV T 
 
 #define HML_J &hml LSFT J
 #define HML_X &hml LCTL X
 #define HML_B &hml LALT B
 #define HML_K &hml LGUI K 
 //right
-#define HMR_C &hlr LAYER_Number C
+#define HMR_C &hlr NUM C
 #define HMR_E &kp E 
-#define HMR_I &hlr LAYER_Symbol I
+#define HMR_I &hlr SYM I
 #define HMR_A &hmr RALT A
 
 #define HMR_P     &hmr RGUI P
@@ -444,7 +444,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
             &skq LSFT   &kp A      &kp S    &kp D     &kp F   &kp G                                                       &kp H       &kp J       &kp K     &kp L     &kp SCLN      &skq RSFT
  &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &kp N1
                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt LAYER_Number SPACE
+                                                      &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt NUM SPACE
             >;
         };
 
