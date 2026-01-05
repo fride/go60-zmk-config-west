@@ -420,7 +420,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
 
         layer_Sturdy {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to Layer_GAME
+            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to LAYER_Game
               &kp TAB   &kp V      &kp M    &kp L     &kp C   &kp P                                                       &kp B   &magic_st       &kp U      &kp O     &kp Q     &kp BSLH
             &skq LSFT   &kp S      &kp T    &kp R     &kp D   &kp Y                                                       &kp H       &kp N       &kp E      &kp I     &kp A      &skq RSFT
  &magic LAYER_Magic 0   &kp Z      &kp K    &kp J     &kp G   &kp W                                                       &kp X       &kp H     &kp COMMA  &kp DOT   &kp SQT   &kp N1
