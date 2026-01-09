@@ -432,7 +432,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
               &kp TAB         &kp V        &kp M        &kp L        &kp C   &kp P                                                       &kp B    &magic_st            &kp U          &kp O         &kp Q     &kp BSLH
             &skq LSFT         &kp S   &hll SYM T        &kp R   &hll NAV D   &kp Y                                                       &kp F   &hlr NUM N            &kp E     &hlr SYM I         &kp A      &skq RSFT
  &magic LAYER_Magic 0   &hml LSFT Z  &hml LCTL K  &hml LALT J  &hml LGUI G   &kp W                                                       &kp X  &hmr RGUI H  &hmr LALT COMMA  &hmr LCTL DOT  &hmr RSFT SQT   &kp N1
-                               &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
+                            &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
                                                       NAV_SPACE   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT &arcane
             >;
         };
