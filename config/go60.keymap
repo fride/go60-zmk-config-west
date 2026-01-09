@@ -17,7 +17,6 @@
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "zmk-helpers/helper.h"
-#include <behaviors/num_word.dtsi>
 #include "definitions/keypos_go60.dtsi"
 
 #define XXX &none
@@ -103,30 +102,13 @@ ZMK_HOLD_TAP(hlr,
 
 &mt { MT_CORE };
 
-// num word on thumb
-// Tap: num-word | double-tap: sticky num-layer | Hold: num-layer.
-&num_word {
-  continue-list = <BSPC DEL DOT UNDERSCORE COMMA>;
-};
-#define SMART_NUM &smart_num NUM 0
-ZMK_HOLD_TAP(smart_num, bindings = <&mo>, <&num_dance>; flavor = "balanced";
-             tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;)
-ZMK_TAP_DANCE(num_dance, bindings = <&num_word NUM>, <&sl NUM>;
-              tapping-term-ms = <200>;)
 
 // define home row keys and nav space
 #define NAV_SPACE &lt NAV SPACE
 
 //
 
-
-
 // left
-
-
-
-
-
 #define HML_S &hml RALT S
 #define HML_R &hll SYM R
 #define HML_N &kp N
@@ -220,13 +202,6 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
     };
 
     behaviors {
-        leader_de: leader_de {
-            compatible = "zmk,behavior-leader-key";
-            #binding-cells = <0>;
-            de_ae { sequence = <A>; bindings = <&ae>; };
-            de_oe { sequence = <O>; bindings = <&oe>; };
-            de_ue { sequence = <U>; bindings = <&ue>; };
-        };
         skq: sticky_key_quick_release {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -419,7 +394,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
             bindings = <
             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7      &kp N8     &kp N9     &kp N0  &to LAYER_Sturdy
               &kp TAB   &kp F      &kp L    &kp H     &kp D   &kp V                                                           &kp W   &kp G       &kp O      &kp U    &kp SQT        &kp BSLH
-           &leader_de   HML_S      HML_R    HML_N     HML_T   &kp M                                                           &kp Y   HMR_C       HMR_E      HMR_I      HMR_A        &leader_de
+            &sqk LSFT   HML_S      HML_R    HML_N     HML_T   &kp M                                                           &kp Y   HMR_C       HMR_E      HMR_I      HMR_A        &skq RSFT
  &magic LAYER_Magic 0   HML_J      HML_X    HML_B     HML_K   &kp Q                                                           &kp Z   HMR_P   HMR_COMMA    HMR_DOT  HMR_SLASH           &kp N1
                                &kp END &kp LEFT  &kp RIGHT                                                                           &kp UP    &kp DOWN  &kp HOME
                                                       NAV_SPACE   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT &arcane
