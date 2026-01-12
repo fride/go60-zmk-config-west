@@ -5,6 +5,22 @@
 #define COMBO_IDLE_SLOW 50
 
 
+
+ZMK_COMBO(enter,              &kp RET,           POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3, ALL, 25)
+ZMK_COMBO(delete,             &kp DEL,           POS_LH_C2R3 POS_LH_C1R3, ALL, 25)
+ZMK_COMBO(backspace,          &kp BACKSPACE,     POS_RH_C2R3 POS_RH_C1R3, ALL, 25)
+
+ZMK_COMBO(ae,                 &ae,              POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(oe,                 &oe,              POS_RH_C2R3 POS_RH_C3R2, ALL, 25)
+ZMK_COMBO(ue,                 &ue,              POS_RH_C2R2 POS_RH_C3R2, ALL, 25)
+ZMK_COMBO(sz,                 &sz,              POS_RH_C5R2 POS_RH_C4R2, ALL, 25)
+
+ZMK_COMBO(gt,    &kp GT,   POS_RH_C1R2 POS_RH_C1R3, ALL, 25)
+ZMK_COMBO(rbkt,  &kp RBKT, POS_RH_C2R2 POS_RH_C2R3, ALL, 25)
+ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
+ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
+ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
+/*
 // vertical top
 
 ZMK_COMBO(at,             &kp AT,         POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
@@ -27,7 +43,7 @@ ZMK_COMBO(backspace,   &kp BACKSPACE, POS_RH_C2R3 POS_RH_C1R3)
 
 ZMK_COMBO(at,         &kp AT,     POS_LH_C2R2 POS_LH_C3R2, ALL, 25)
 
-ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_T2, ALL, 25)
+// ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_T2, ALL, 25)
 
 // ZMK_COMBO(esc,        &kp ESC,   POS_LH_C2R3 POS_LH_C3R3, ALL, 25)
 // ZMK_COMBO(colon,      &kp COLON, POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
@@ -39,13 +55,9 @@ ZMK_COMBO(numword,    &to 0,      POS_RH_T1 POS_LH_T2, ALL, 25)
 // ZMK_COMBO(left_gui,  &skq LGUI, POS_LH_C2R4 POS_LH_C3R4, ALL, 25)
 // ZMK_COMBO(right_gui,  &skq RGUI, POS_RH_C2R4 POS_RH_C3R4, ALL, 25)
 
-ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
-ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
-ZMK_COMBO(lpar,  &kp LPAR, POS_LH_C3R2 POS_LH_C3R3, ALL, 25)
-ZMK_COMBO(lbrc,  &kp LBRC, POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
-ZMK_COMBO(gt,    &kp GT,   POS_RH_C1R2 POS_RH_C1R3, ALL, 25)
-ZMK_COMBO(rbkt,  &kp RBKT, POS_RH_C2R2 POS_RH_C2R3, ALL, 25)
-ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
-ZMK_COMBO(rbrc,  &kp RBRC, POS_RH_C4R2 POS_RH_C4R3, ALL, 25)
-ZMK_COMBO(tab,   &kp TAB,  POS_LH_C2R3 POS_LH_C3R3 POS_LH_C4R3, ALL, 25)
+//ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
+//ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
+//ZMK_COMBO(lpar,  &kp LPAR, POS_LH_C3R2 POS_LH_C3R3, ALL, 25)
+//ZMK_COMBO(lbrc,  &kp LBRC, POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
 
+*/
