@@ -17,6 +17,10 @@ ZMK_COMBO(oe,                 &oe,              POS_RH_C2R3 POS_RH_C3R2, ALL, 25
 ZMK_COMBO(ue,                 &ue,              POS_RH_C2R2 POS_RH_C3R2, ALL, 25)
 ZMK_COMBO(sz,                 &sz,              POS_RH_C5R2 POS_RH_C4R2, ALL, 25)
 
+ZMK_COMBO(lt,    &kp LT,   POS_LH_C1R2 POS_LH_C1R3, ALL, 25)
+ZMK_COMBO(lbkt,  &kp LBKT, POS_LH_C2R2 POS_LH_C2R3, ALL, 25)
+ZMK_COMBO(lpar,  &kp LPAR, POS_LH_C3R2 POS_LH_C3R3, ALL, 25)
+ZMK_COMBO(lbrc,  &kp LBRC, POS_LH_C4R2 POS_LH_C4R3, ALL, 25)
 ZMK_COMBO(gt,    &kp GT,   POS_RH_C1R2 POS_RH_C1R3, ALL, 25)
 ZMK_COMBO(rbkt,  &kp RBKT, POS_RH_C2R2 POS_RH_C2R3, ALL, 25)
 ZMK_COMBO(rpar,  &kp RPAR, POS_RH_C3R2 POS_RH_C3R3, ALL, 25)
