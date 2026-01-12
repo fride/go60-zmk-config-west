@@ -9,6 +9,8 @@
 ZMK_COMBO(enter,              &kp RET,           POS_RH_C2R3 POS_RH_C3R3 POS_RH_C4R3, ALL, 25)
 ZMK_COMBO(delete,             &kp DEL,           POS_LH_C2R3 POS_LH_C1R3, ALL, 25)
 ZMK_COMBO(backspace,          &kp BACKSPACE,     POS_RH_C2R3 POS_RH_C1R3, ALL, 25)
+ZMK_COMBO(leftshift,          &skq LSFT,         POS_LH_C3R2 POS_LH_C4R2, ALL, 25)
+ZMK_COMBO(rightshift,         &skq RSFT,         POS_RH_C3R2 POS_RH_C4R2, ALL, 25)
 
 ZMK_COMBO(ae,                 &ae,              POS_RH_C2R3 POS_RH_C3R3, ALL, 25)
 ZMK_COMBO(oe,                 &oe,              POS_RH_C2R3 POS_RH_C3R2, ALL, 25)
