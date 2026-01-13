@@ -28,7 +28,7 @@
 #define LAYER_Game 2
 #define NUM 3
 #define NAV 4
-#define ALL 5
+#define ALLWAYS 5
 #define SYM 6
 #define LAYER_Magic 7
 #define LAYER_Factory 8
@@ -129,6 +129,8 @@ ZMK_HOLD_TAP(hlr,
 #define HMR_COMMA &hmr LALT COMMA
 #define HMR_DOT   &hmr RCTL DOT
 #define HMR_SLASH &hmr RSFT SLASH
+
+#define S_ALLWAYS &lt ALLWAYS S
 
 #include "combos.dtsi"
 
@@ -413,7 +415,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
             &skq LSFT         &kp R   &hll SYM N        &kp T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM C            &kp E      &hlr SYM I         &kp A     &skq RSFT
  &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp V                                                     &kp SQT  &hmr RGUI G   &hmr LALT SCLN  &hmr LCTL SCLN  &hmr RSFT DOT   &kp N1
                             &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
-                                                      &kp S   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT NAV_SPACE
+                                                    S_ALLWAYS  &skq LCTL &skq LALT                          &skq LGUI  &skq RALT NAV_SPACE
             >;
         };
 
