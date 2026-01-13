@@ -28,8 +28,8 @@
 #define LAYER_Game 2
 #define NUM 3
 #define NAV 4
-#define ALLWAYS 5
-#define SYM 6
+#define SYM 5
+#define ALLWAYS 6
 #define LAYER_Magic 7
 #define LAYER_Factory 8
 
