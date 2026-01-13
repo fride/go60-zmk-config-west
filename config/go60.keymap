@@ -28,9 +28,10 @@
 #define LAYER_Game 2
 #define NUM 3
 #define NAV 4
-#define SYM 5
-#define LAYER_Magic 6
-#define LAYER_Factory 7
+#define ALL 5
+#define SYM 6
+#define LAYER_Magic 7
+#define LAYER_Factory 8
 
 /* Left-hand HRMs. */
 ZMK_HOLD_TAP(hml,
@@ -138,6 +139,10 @@ ZMK_HOLD_TAP(hlr,
 
 SIMPLE_MORPH(dot_collon, SFT, &kp DOT,   &kp COLON)
 SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)    
+
+&caps_word {
+    continue-list = <UNDERSCORE MINUS>;
+};
 
 / {
     combos {
@@ -406,7 +411,7 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
             &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9        &kp N0    &to LAYER_Game
               &kp TAB         &kp Q        &kp L        &kp D        &kp Z   &kp K                                                       &kp P        &kp W            &kp O           &kp U     &kp COMMA     &kp BSLH
             &skq LSFT         &kp R   &hll SYM N        &kp T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM C            &kp E      &hlr SYM I         &kp A     &skq RSFT
- &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp V                                                     &kp SQT  &hmr RGUI G  &hmr LALT COMMA  &hmr LCTL SCLN  &hmr RSFT DOT   &kp N1
+ &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp V                                                     &kp SQT  &hmr RGUI G   &hmr LALT SCLN  &hmr LCTL SCLN  &hmr RSFT DOT   &kp N1
                             &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
                                                       &kp S   &skq LCTL &skq LALT                          &skq LGUI  &skq RALT NAV_SPACE
             >;
@@ -451,6 +456,16 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
              &kp CAPS   &kp EXCL   &kp STAR   &kp SLASH  &kp EQUAL   &kp AMPS                                      &kp HASH  &kp LPAR         &kp RPAR     &kp SCLN           &kp DQT  &kp PSCRN
  &magic LAYER_Magic 0  &kp TILDE   &kp PLUS    &kp LBKT   &kp RBKT  &kp PRCNT                                      &kp AT    &kp COLON       &kp COMMA      &kp DOT           &kp SQT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
+                                                            &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
+            >;
+        };
+        layer_Always {
+            bindings = <
+              &kp INS     &kp F1       &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
+             &kp SLCK  &kp GRAVE       &kp LT   &kp COLON    &kp ESC   &kp PIPE                                      &kp CARET &kp LBRC         &kp RBRC   &kp DOLLAR            &arrow  &kp F12
+             &kp CAPS   &kp EXCL  &kp PERCENT   &kp SLASH  &kp ENTER   &kp AMPS                                      &kp HASH  &kp LPAR         &kp RPAR     &kp SCLN           &kp DQT  &kp PSCRN
+ &magic LAYER_Magic 0  &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT  &kp PRCNT                                      &kp AT    &kp COLON       &kp COMMA      &kp DOT           &kp SQT  &kp LCTRL
+                                    &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
                                                             &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
             >;
         };
