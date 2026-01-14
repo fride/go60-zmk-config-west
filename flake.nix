@@ -1,46 +1,66 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    zmk-nix = {
-      url = "github:lilyinstarlight/zmk-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # This pins requirements.txt provided by zephyr-nix.pythonEnv.
+    zephyr.url = "github:zmkfirmware/zephyr/v3.5.0+zmk-fixes";
+    zephyr.flake = false;
+
+    # Zephyr sdk and toolchain.
+    zephyr-nix.url = "github:urob/zephyr-nix";
+    zephyr-nix.inputs.zephyr.follows = "zephyr";
+    zephyr-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
-    self,
     nixpkgs,
-    zmk-nix,
+    zephyr-nix,
+    ...
   }: let
-    forAllSystems = nixpkgs.lib.genAttrs (nixpkgs.lib.attrNames zmk-nix.packages);
+    systems = ["x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin"];
+    forAllSystems = nixpkgs.lib.genAttrs systems;
   in {
-    packages = forAllSystems (system: rec {
-      default = firmware;
+    devShells = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        zephyr = zephyr-nix.packages.${system};
+        keymap_drawer = pkgs.python3Packages.callPackage ./nix/keymap-drawer.nix {};
+      in {
+        default = pkgs.mkShellNoCC {
+          packages = [
+            zephyr.pythonEnv
+            (zephyr.sdk-0_16.override {targets = ["arm-zephyr-eabi"];})
 
-      firmware = zmk-nix.legacyPackages.${system}.buildSplitKeyboard {
-        name = "firmware";
+            pkgs.cmake
+            pkgs.dtc
+            pkgs.gcc
+            pkgs.ninja
 
-        src = nixpkgs.lib.sourceFilesBySuffices self [".board" ".cmake" ".conf" ".defconfig" ".dts" ".dtsi" ".json" ".keymap" ".overlay" ".shield" ".yml" "_defconfig"];
+            pkgs.just
+            pkgs.yq # Make sure yq resolves to python-yq.
 
-        board = "nice_nano@2.0.0";
-        shield = "lily58_%PART%";
+            keymap_drawer
 
-        zephyrDepsHash = "sha256-eLfPUSXMrh9uB/Qvtc9prYTG2rzmj/f10YPFNWd3qWs=";
+            # -- Used by just_recipes and west_commands. Most systems already have them. --
+            # pkgs.gawk
+            # pkgs.unixtools.column
+            # pkgs.coreutils # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
+            # pkgs.diffutils
+            # pkgs.findutils # find, xargs
+            # pkgs.gnugrep
+            # pkgs.gnused
+          ];
 
-        meta = {
-          description = "ZMK firmware";
-          license = nixpkgs.lib.licenses.mit;
-          platforms = nixpkgs.lib.platforms.all;
+          env = {
+            PYTHONPATH = "${zephyr.pythonEnv}/${zephyr.pythonEnv.sitePackages}";
+          };
+
+          shellHook = ''
+            export ZMK_BUILD_DIR=$(pwd)/.build;
+            export ZMK_SRC_DIR=$(pwd)/zmk/app;
+          '';
         };
-      };
-
-      flash = zmk-nix.packages.${system}.flash.override {inherit firmware;};
-      update = zmk-nix.packages.${system}.update;
-    });
-
-    devShells = forAllSystems (system: {
-      default = zmk-nix.devShells.${system}.default;
-    });
+      }
+    );
   };
 }
