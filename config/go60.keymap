@@ -410,10 +410,10 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
 
         layer_Norden {
             bindings = <
-            &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9        &kp N0    &to LAYER_Game
-              &kp TAB         &kp Q        &kp L        &kp D        &kp Z   &kp K                                                       &kp P        &kp W            &kp O           &kp U     &kp COMMA     &kp BSLH
-            &skq LSFT         &kp R   &hll SYM N        &kp T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM C            &kp E      &hlr SYM I         &kp A     &skq RSFT
- &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp V                                                     &kp SQT  &hmr RGUI G   &hmr LALT SCLN  &hmr LCTL SCLN  &hmr RSFT DOT   &kp N1
+            &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9           &kp N0    &to LAYER_Game
+              &kp TAB         &kp Q        &kp L        &kp D        &kp Z   &kp V                                                       &kp P        &kp W            &kp O           &kp U          &kp SQT     &kp BSLH
+            &skq LSFT         &kp R   &hll SYM N        &kp T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM C            &kp E      &hlr SYM I            &kp A     &skq RSFT
+ &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp K                                                    &kp SCLN  &hmr RGUI G  &hmr LALT COMMA   &hmr LCTL DOT  &hmr RSFT SLASH   &kp N1
                             &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
                                                     S_ALLWAYS  &skq LCTL &skq LALT                          &skq LGUI  &skq RALT NAV_SPACE
             >;
