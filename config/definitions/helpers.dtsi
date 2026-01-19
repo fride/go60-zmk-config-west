@@ -1,0 +1,10 @@
+#define TRANSPARENT_LAYER \
+            bindings = < \
+ &trans  &trans  &trans  &trans  &trans  &trans                                       &trans  &trans  &trans  &trans  &trans  &trans \
+ &trans  &trans  &trans  &trans  &trans  &trans                                       &trans  &trans  &trans  &trans  &trans  &trans \
+ &trans  &trans  &trans  &trans  &trans  &trans                                       &trans  &trans  &trans  &trans  &trans  &trans \
+ &trans  &trans  &trans  &trans  &trans  &trans                                       &trans  &trans  &trans  &trans  &trans  &trans \
+                 &trans  &trans  &trans                                                       &trans  &trans  &trans \
+                                          &trans  &trans  &trans      &trans  &trans  &trans \
+            >; \
+        

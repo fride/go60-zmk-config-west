@@ -41,6 +41,8 @@
 
             keymap_drawer
 
+            pkgs.rustc
+            pkgs.cargo
             # -- Used by just_recipes and west_commands. Most systems already have them. --
             # pkgs.gawk
             # pkgs.unixtools.column

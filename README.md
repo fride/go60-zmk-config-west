@@ -1,5 +1,24 @@
+
+TODOS:
+
+- [ ] check if I prefer combos or long press for umlaute. If I use combos for Umlaute I need to find a good place for esc and : or keep the always on layer
+- [ ] The nav layer on space or on fingers. On Space is nicer because better shortcuts
+
+
+
 # `west`-based Custom ZMK Configuration for MoErgo Go60
 
+ /*        layer_Game {
+             bindings = <
+             &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
+               &kp TAB   &kp Q      &kp W    &kp E     &kp R   &kp T                                                       &kp Y       &kp U      &kp I      &kp O     &kp P     &kp BSLH
+             &skq LSFT   &kp A      &kp S    &kp D     &kp F   &kp G                                                       &kp H       &kp J       &kp K     &kp L     &kp SCLN      &skq RSFT
+  &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &kp N1
+                                &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
+                                                       &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt NUM SPACE
+             >;
+         };
+*/
 ![MoErgo Logo](moergo_logo.png)
 
 This template repository provides `west`-based ZMK configuration for the MoErgo Go60 wireless split contoured keyboard.

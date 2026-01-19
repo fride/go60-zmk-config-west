@@ -18,6 +18,8 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include "zmk-helpers/helper.h"
 #include "definitions/keypos_go60.dtsi"
+#include "definitions/helpers.dtsi"
+
 
 #define XXX &none
 #define ___ &trans 
@@ -27,11 +29,15 @@
 #define LAYER_Sturdy 1
 #define LAYER_Game 2
 #define NUM 3
-#define NAV 4
-#define SYM 5
-#define ALLWAYS 6
-#define LAYER_Magic 7
-#define LAYER_Factory 8
+#define NUM_TMP 4
+#define NUM_LCK 5
+#define NAV 6
+#define NAV_TMP 7
+#define NAV_LCK 8
+#define SYM 9
+#define ALLWAYS 10
+#define LAYER_Magic 1
+#define LAYER_Factory 12
 
 /* Left-hand HRMs. */
 ZMK_HOLD_TAP(hml,
@@ -104,8 +110,13 @@ ZMK_HOLD_TAP(hlr,
 &mt { MT_CORE };
 
 
+#define ARROW &arrow 0 0
+
 // define home row keys and nav space
 #define NAV_SPACE &lt NAV SPACE
+#define R_ALL &lt ALLWAYS R
+#define LOCK_NAV &tog NAV_LCK
+#define LOCK_NUM &tog NUM_LCK
 
 //
 
@@ -113,14 +124,14 @@ ZMK_HOLD_TAP(hlr,
 #define HML_S &hml RALT S
 #define HML_R &hll SYM R
 #define HML_N &kp N
-#define HML_T &hll NAV T 
+#define HML_T &hll NAV_TMP T 
 
 #define HML_J &hml LSFT J
 #define HML_X &hml LCTL X
 #define HML_B &hml LALT B
 #define HML_K &hml LGUI K 
 //right
-#define HMR_C &hlr NUM C
+#define HMR_C &hlr NUM_TMP C
 #define HMR_E &kp E 
 #define HMR_I &hlr SYM I
 #define HMR_A &hmr RALT A
@@ -140,13 +151,42 @@ ZMK_HOLD_TAP(hlr,
                 bindings = <BINDING1>, <BINDING2>;)
 
 SIMPLE_MORPH(dot_collon, SFT, &kp DOT,   &kp COLON)
-SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)    
+SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
+
+// tap: copy | double-tap: cut
+ZMK_TAP_DANCE(copy_cut,
+    tapping-term-ms = <200>;
+    bindings = <&kp LC(INS)>, <&kp LC(X)>;
+)
+
+
+
 
 &caps_word {
     continue-list = <UNDERSCORE MINUS>;
 };
 
 / {
+     conditional_layers {
+        compatible = "zmk,conditional-layers";
+        nav_temp {
+            if-layers = <NAV_TMP>;
+            then-layer = <NAV>;
+        };
+        nav_lock {
+            if-layers = <NAV_LCK>;
+            then-layer = <NAV>;
+        };
+        num_temp {
+            if-layers = <NUM_TMP>;
+            then-layer = <NUM>;
+        };
+        num_lock {
+            if-layers = <NUM_LCK>;
+            then-layer = <NUM>;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
 
@@ -209,6 +249,12 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
     };
 
     behaviors {
+        swapper: swapper {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt LALT>, <&kp TAB>, <&kt LALT>;
+        };
+
         skq: sticky_key_quick_release {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -258,11 +304,15 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
              #binding-cells = <0>;
              bindings = <&skq LSFT>;
              arc_eo { trigger-keys = <E>; max-prior-idle-ms = <500>; bindings = <&kp O>; };
+             arc_yp { trigger-keys = <Y>; max-prior-idle-ms = <500>; bindings = <&kp P>; };
              arc_au { trigger-keys = <A>; max-prior-idle-ms = <500>; bindings = <&kp U>; };
              arc_rl { trigger-keys = <R>; max-prior-idle-ms = <500>; bindings = <&kp L>; };
              arc_kt { trigger-keys = <K>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
              arc_dt { trigger-keys = <D>; max-prior-idle-ms = <500>; bindings = <&kp T>; };
+             arc_zw { trigger-keys = <Z>; max-prior-idle-ms = <500>; bindings = <&kp W>; }; // todo - better ff?
              arc_fr { trigger-keys = <F>; max-prior-idle-ms = <500>; bindings = <&kp R>; }; // todo - better ff?
+             arc_include{ trigger-keys = <HASH>; max-prior-idle-ms = <500>; bindings = <&minclude>; }; // todo - better ff?
+
              arc_vim { trigger-keys = <ESC>; max-prior-idle-ms = <500>; bindings = <&kp COLON>; };
         };
 
@@ -386,12 +436,51 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
                 , <&kp S>;
         };
 
-        arrow: awwow {
-            label = "&ARROW";
+        tarrow: tarrow{
+            label = "&TARROW";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp MINUS>
                 , <&kp GT>;
+        };
+        farrow: fawwow {
+            label = "&FARROW";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>
+                , <&kp GT>;
+        };
+
+        arrow: mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&farrow>, <&tarrow>;
+            display-name = "Arrow";
+        };
+        
+        overview: overview {
+            label = "magic include";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+                 <&kt LGUI>
+                , <&kp O>
+                , <&kt LGUI>;
+        };
+        minclude: minclude {
+            label = "magic include";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = 
+                 <&kp I>
+                , <&kp N>
+                , <&kp C>
+                , <&kp L>
+                , <&kp U>
+                , <&kp D>
+                , <&kp E>;
         };
     };
 
@@ -410,37 +499,46 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
 
         layer_Norden {
             bindings = <
-            &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9           &kp N0    &to LAYER_Game
+            &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9           &kp N0    &to 2
               &kp TAB         &kp Q        &kp L        &kp D        &kp Z   &kp V                                                       &kp P        &kp W            &kp O           &kp U          &kp SQT     &kp BSLH
-            &skq LSFT         &kp R   &hll SYM N        &kp T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM C            &kp E      &hlr SYM I            &kp A     &skq RSFT
+            &skq LSFT   &hml LSFT R   &hll SYM N  &hml LSFT T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM C      &hml LSFT E      &hlr SYM I      &hmr RSFT A     &skq RSFT
  &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp K                                                    &kp SCLN  &hmr RGUI G  &hmr LALT COMMA   &hmr LCTL DOT  &hmr RSFT SLASH   &kp N1
                             &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
-                                                    S_ALLWAYS  &skq LCTL &skq LALT                          &skq LGUI  &skq RALT NAV_SPACE
+                                                    S_ALLWAYS  &sl NUM   &skq LALT                          &skq LGUI  &kp UNDER NAV_SPACE
             >;
         };
 
-        layer_Game {
+        layer_NordenAs {
             bindings = <
-            &kp EQUAL  &kp N1     &kp N2   &kp N3    &kp N4  &kp N5                                                       &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &to 0
-              &kp TAB   &kp Q      &kp W    &kp E     &kp R   &kp T                                                       &kp Y       &kp U      &kp I      &kp O     &kp P     &kp BSLH
-            &skq LSFT   &kp A      &kp S    &kp D     &kp F   &kp G                                                       &kp H       &kp J       &kp K     &kp L     &kp SCLN      &skq RSFT
- &magic LAYER_Magic 0   &kp Z      &kp X    &kp C     &kp V   &kp B                                                       &kp SLASH   &kp SCLN &kp DOT  &kp COMMA   &kp SQT   &kp N1
-                               &kp GRAVE  &kp DEL  &kp BSPC                                                                           &kp N9    &kp LBKT  &kp RBKT
-                                                      &kp SPACE   &kp N1 &kp N2                            &kp N1  &kp N2  &lt NUM SPACE
+            &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9           &kp N0    &to 0
+              &kp TAB         &kp V        &kp M        &kp L        &kp C   &kp P                                                       &kp X       &arcane           &kp O           &kp U           &kp Q     &kp BSLH
+            &skq LSFT   &hml LALT S   &hll SYM T  &hml LSFT N   &hll NAV D   &kp Y                                                       &kp B   &hlr NUM H      &hmr LSFT E      &hlr SYM I      &hmr LALT A     &skq RSFT
+ &magic LAYER_Magic 0   &hml LSFT Z  &hml LCTL K  &hml LALT J  &hml LGUI G   &kp W                                                     &kp SQT  &hmr RGUI F  &hmr LALT COMMA   &hmr LCTL DOT  &hmr RSFT SLASH   &kp N1
+                            &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
+                                                        R_ALL  &sl NUM   &skq LALT                          &skq LGUI  &skq LSFT NAV_SPACE
             >;
         };
+
 
         layer_Number{
             bindings = <
-                &none     &kp F1     &kp F2     &kp F3     &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
-               &trans  &kp SLASH     &kp N1     &kp N2     &kp N3       &kp STAR                                              &kp BSLH   &kp HASH     &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
-               &trans  &kp MINUS     &kp N4     &kp N5     &kp N6       &kp PLUS                                              &kp CARET  &trans      &kp UNDER     &kp EQUAL       &kp DOLLAR     &kp KP_NUM
- &magic LAYER_Magic 0      &kp X     &kp N7     &kp N8     &kp N9       &kp PRCNT                                             &trans     &trans      &kp COMMA       &kp DOT     &kp SLASH &to LAYER_Base
+                &none        &kp F1        &kp F2        &kp F3        &kp F4         &kp F5                                                 &kp F6     &kp F7      &kp F8        &kp F9          &kp F10        &kp F11
+               &trans     &kp SLASH        &kp N9        &kp N8        &kp N7       &kp STAR                                               &kp BSLH   &kp HASH      &kp AMPS      &kp PIPE     &kp TILDE           &kp F12
+               &trans     &kp MINUS        &kp N6        &kp N5        &kp N4       &kp PLUS                                                 &kp AT     &trans      &kp LALT      &kp LCTL      &kp LSFT     &kp KP_NUM
+ &magic LAYER_Magic 0         &kp X        &kp N3        &kp N2        &kp N1      &kp PRCNT                                              &kp CARET     &kp N8      &kp COMMA     &kp DOT      &kp SLASH &to LAYER_Base
                                       &none     &trans     &trans                                                                        &kp KP_N0  &kp KP_DOT      &kp BSPC
-                                                            &kp SPACE  &trans &trans                                     &trans  &trans  &kp KP_N0
+                                                            &kp N0  &kp LT &kp GT                                         &kp LT LOCK_NUM  &kp SPACE
             >;
         };
 
+        layer_NumTmp {
+            TRANSPARENT_LAYER  
+        };
+        
+        layer_NumLck {
+            TRANSPARENT_LAYER  
+        };
+        
         layer_Navigation {
             bindings = <
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
@@ -448,13 +546,23 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
              &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
  &magic LAYER_Magic 0  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
-                                                            &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
+                                                            &to LAYER_Base  &trans  &trans       &trans  LOCK_NAV &trans
             >;
         };
+
+        layer_NavTemp {
+            TRANSPARENT_LAYER  
+        };
+
+        layer_NavLock {
+            TRANSPARENT_LAYER  
+        };
+        
+        
         layer_Symbol {
             bindings = <
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
-             &kp SLCK  &kp GRAVE     &kp LT      &kp GT  &kp MINUS   &kp PIPE                                      &kp CARET &kp LBRC         &kp RBRC   &kp DOLLAR            &arrow  &kp F12
+             &kp SLCK  &kp GRAVE     &kp LT      &kp GT  &kp MINUS   &kp PIPE                                      &kp CARET &kp LBRC         &kp RBRC   &kp DOLLAR            ARROW &kp F12
              &kp CAPS   &kp EXCL   &kp STAR   &kp SLASH  &kp EQUAL   &kp AMPS                                      &kp HASH  &kp LPAR         &kp RPAR     &kp SCLN           &kp DQT  &kp PSCRN
  &magic LAYER_Magic 0  &kp TILDE   &kp PLUS    &kp LBKT   &kp RBKT  &kp PRCNT                                      &kp AT    &kp COLON       &kp COMMA      &kp DOT           &kp SQT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
@@ -464,9 +572,9 @@ SIMPLE_MORPH(comma_scln, SFT, &kp COMMA, &kp SCLN)
         layer_Always {
             bindings = <
               &kp INS     &kp F1       &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
-             &kp SLCK  &kp GRAVE       &kp LT   &kp COLON    &kp ESC   &kp PIPE                                      &kp CARET &kp LBRC         &kp RBRC   &kp DOLLAR            &arrow  &kp F12
-             &kp CAPS   &kp EXCL  &kp PERCENT   &kp SLASH  &kp ENTER   &kp AMPS                                      &kp HASH  &kp LPAR         &kp RPAR     &kp SCLN           &kp DQT  &kp PSCRN
- &magic LAYER_Magic 0  &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT  &kp PRCNT                                      &kp AT    &kp COLON       &kp COMMA      &kp DOT           &kp SQT  &kp LCTRL
+             &kp SLCK   &swapper      &kp TAB   &kp COLON    &kp ESC   &kp PIPE                                      &kp CARET &kp LBRC         &kp RBRC   &kp DOLLAR            &arrow  &kp F12
+             &kp CAPS  &overview  &kp PERCENT   &kp SLASH  &kp ENTER   &kp AMPS                                      &kp HASH  &kp RCTL         &kp RSFT     &kp LALT         &kp RGUI  &kp PSCRN
+ &magic LAYER_Magic 0  &kp TILDE     &kp PLUS    &kp LBKT   &kp RBKT  &kp PRCNT                                      &kp AT    &kp COLON       &kp COMMA      &kp DOT         &kp SQT  &kp LCTRL
                                     &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
                                                             &to LAYER_Base  &trans  &trans       &trans  &trans  &trans
             >;

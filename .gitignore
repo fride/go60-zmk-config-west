@@ -9,3 +9,8 @@ zmk
 draw/base.yaml
 cirque-input-module
 /zmk-*
+
+
+# Added by cargo
+
+/target
