@@ -501,7 +501,7 @@ ZMK_TAP_DANCE(copy_cut,
             bindings = <
             &kp EQUAL        &kp N1       &kp N2       &kp N3       &kp N4  &kp N5                                                       &kp N6      &kp N7           &kp N8          &kp N9           &kp N0    &to 2
               &kp TAB         &kp Q        &kp L        &kp D        &kp Z   &kp V                                                       &kp P        &kp W            &kp O           &kp U          &kp SQT     &kp BSLH
-            &skq LSFT   &hml LSFT R   &hll SYM N  &hml LSFT T   &hll NAV H   &kp F                                                       &kp Y   &hlr NUM_TMP C      &hml LSFT E      &hlr SYM I      &hmr RSFT A     &skq RSFT
+            &skq LSFT   &hml LSFT R   &hll SYM N  &hml LSFT T   &hll NAV_TMP H   &kp F                                                       &kp Y   &hlr NUM_TMP C      &hml LSFT E      &hlr SYM I      &hmr RSFT A     &skq RSFT
  &magic LAYER_Magic 0   &hml LSFT X  &hml LCTL J  &hml LALT M  &hml LGUI B   &kp K                                                    &kp SCLN  &hmr RGUI G  &hmr LALT COMMA   &hmr LCTL DOT  &hmr RSFT SLASH   &kp N1
                             &kp END     &kp LEFT    &kp RIGHT                                                                           &kp UP    &kp DOWN          &kp HOME
                                                     S_ALLWAYS  &sl NUM   &skq LALT                          &skq LGUI  &kp UNDER NAV_SPACE
@@ -542,8 +542,8 @@ ZMK_TAP_DANCE(copy_cut,
         layer_Navigation {
             bindings = <
               &kp INS     &kp F1     &kp F2      &kp F3     &kp F4     &kp F5                                       &kp F6    &kp F7           &kp F8       &kp F9          &kp F10    &kp F11
-             &kp SLCK   &kp EXCL   &kp HOME      &kp UP    &kp END  &kp PG_UP                                     &kp LPAR  &kp BSPC           &kp UP      &kp DEL         &kp K_APP    &kp F12
-             &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                     &kp DLLR  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
+             &kp SLCK   &swapper  &kp HOME      &kp UP    &kp END  &kp PG_UP                                    &kp PG_UP  &kp BSPC           &kp UP      &kp DEL         &kp K_APP    &kp F12
+             &kp CAPS  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI  &kp PG_DN                                   &kp PG_DN  &kp LEFT         &kp DOWN    &kp RIGHT  &kp PAUSE_BREAK  &kp PSCRN
  &magic LAYER_Magic 0  &skq LSFT  &skq LCTL   &skq LALT  &skq LGUI   &kp RBRC                                     &kp AMPS  &kp STAR        &kp UNDER     &kp PLUS        &kp LSHFT  &kp LCTRL
                                   &kp CARET      &trans     &trans                                                            &trans  &kp LC(LS(TAB))  &kp LC(TAB)
                                                             &to LAYER_Base  &trans  &trans       &trans  LOCK_NAV &trans
